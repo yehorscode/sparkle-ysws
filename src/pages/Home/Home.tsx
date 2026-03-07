@@ -1,8 +1,31 @@
-import page_background from "@/assets/primitive_bg.webp";
 import hc_flag from "@/assets/hc-flag-white.svg";
-import { useState } from "react";
+import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_1920x1080.webp";
+import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
+import { useEffect, useState } from "react";
 const PageHome = () => {
   const [email, setEmail] = useState("");
+  const bg_1920x1080 = sparkle_bg_1920x1080;
+  const bg_2560x1440 = sparkle_bg_2560x1440;
+
+  const selectBackground = (width: number) =>
+    width >= 2200 ? bg_2560x1440 : bg_1920x1080;
+
+  const [heroBackground, setHeroBackground] = useState(() =>
+    typeof window === "undefined" ? bg_1920x1080 : selectBackground(window.innerWidth),
+  );
+
+  useEffect(() => {
+    const updateBackground = () => {
+      setHeroBackground(selectBackground(window.innerWidth));
+    };
+
+    updateBackground();
+    window.addEventListener("resize", updateBackground);
+
+    return () => {
+      window.removeEventListener("resize", updateBackground);
+    };
+  }, []);
 
   function rsvp_handler(email: string) {
     if (!email.includes("@")) {
@@ -19,10 +42,10 @@ const PageHome = () => {
     <div className="w-full">
       <section
         className="relative flex h-screen w-full justify-center bg-cover bg-center p-3 sm:p-4"
-        style={{ backgroundImage: `url(${page_background})` }}
+        style={{ backgroundImage: `url(${heroBackground})` }}
       >
         <div className="absolute left-1/2 top-3 -translate-x-1/2 sm:top-4 w-30">
-          <img src={hc_flag} alt="Hack Club flag transparent white" />
+          <img src={hc_flag} alt="Hack Club flag transparent white" width={"120px"}/>
 
           {/* <a href="https://hackclub.com/">
             <img
