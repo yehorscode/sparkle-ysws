@@ -90,16 +90,16 @@ const PageHome = () => {
           </a> */}
         </div>
         <div className="self-start mt-60 sm:mt-48 md:mt-36 lg:mt-50 flex flex-col text-center text-[#ffffff] text-shadow-md bg-amber-300/50 rounded shadow-accent shadow-md p-5">
-          <span className="pb-4 opacity-80 sm:pb-5 sm:text-lg md:text-xl">
+          <span className="font-dynapuff pb-4 opacity-80 sm:pb-5 sm:text-lg md:text-xl">
             RSVP form available
           </span>
-          <h1 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
+          <h1 className="font-dynapuff text-2xl font-bold leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
             Learn from a friend and get rewards!
           </h1>
           <div className="mt-4 flex rounded bg-accent/50 p-2 text-black sm:mt-5">
             <input
               placeholder="name@email.com"
-              className="flex-1 text-base outline-none placeholder:text-black placeholder:text-base sm:text-lg sm:placeholder:text-lg md:text-xl md:placeholder:text-xl"
+              className="font-dynapuff flex-1 text-base outline-none placeholder:text-black placeholder:text-base sm:text-lg sm:placeholder:text-lg md:text-xl md:placeholder:text-xl"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -121,7 +121,7 @@ const PageHome = () => {
           <div className="flex w-full flex-col items-center lg:items-start">
             <div className="">
               <span className="text-3xl text-white sm:text-4xl font-bold">
-                What is sparkle?
+                What is sparkle? ✨
               </span>
             </div>
             {/* boxes for explainers */}
@@ -141,6 +141,12 @@ const PageHome = () => {
               </CloudStepCard>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-black text-white">
+        <div className="p-4 text-center">
+          <span className="text-2xl sm:text-3xl ">What are you waiting for? RSVP now!</span>
         </div>
       </section>
     </div>
