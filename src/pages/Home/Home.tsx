@@ -4,13 +4,18 @@ import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
 import { type ReactNode, useEffect, useState } from "react";
 import cloud from "@/assets/cloud.png";
 import { toast } from "sonner";
+import eyeshake from "@/assets/eyeshake.gif";
 type CloudStepCardProps = {
   step: string;
   children: ReactNode;
   className?: string;
 };
 
-const CloudStepCard = ({ step, children, className = "" }: CloudStepCardProps) => {
+const CloudStepCard = ({
+  step,
+  children,
+  className = "",
+}: CloudStepCardProps) => {
   return (
     <div
       className={`mx-auto flex duration-75 transition-all w-full aspect-12/10 flex-col items-center justify-center rounded bg-size-[130%_auto] bg-center bg-no-repeat px-10 text-center sm:max-w-xl sm:bg-size-[120%_auto] sm:px-16 sm:py-10 md:max-w-2xl md:bg-size-[110%_auto] md:px-20 lg:max-w-2xl ${className}`}
@@ -122,13 +127,18 @@ const PageHome = () => {
         <span className="absolute bottom-5 text-xl text-cyan-500 drop-shadow-xl">
           Scroll down to learn more!
         </span>
-        <span className="absolute bottom-10 right-10 text-7xl p-5 hover:cursor-pointer" onClick={() => alert("e")}>✨</span>
+        {/* <span
+          className="absolute bottom-10 right-10 text-7xl p-5 hover:cursor-pointer"
+          onClick={() => alert("e")}
+        >
+          ✨
+        </span> */}
       </section>
 
       <section className="flex font-dynapuff min-h-screen w-full flex-col bg-cyan-400 px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 xl:flex-row xl:items-start">
-          <div className="flex w-full flex-col items-center lg:items-start">
-            <div className="">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 xl:flex-row">
+          <div className="flex w-full flex-col items-center">
+            <div className="flex items-center justify-center">
               <span className="text-5xl text-white sm:text-6xl font-bold">
                 What is sparkle? ✨
               </span>
@@ -143,7 +153,15 @@ const PageHome = () => {
                 Or maybe a new language?
               </CloudStepCard>
               <CloudStepCard step="3">
-                <b>Track your progress</b> via [placeholder]
+                <b>Track your progress</b> via{" "}
+                <a
+                  href="https://hackatime.hackclub.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-blue-500"
+                >
+                  Hackatime
+                </a>
               </CloudStepCard>
               <CloudStepCard step="4">
                 <b>Earn cool prizes!</b> You and your friend earn a reward!
@@ -152,17 +170,72 @@ const PageHome = () => {
           </div>
         </div>
       </section>
-      <section className="bg-cyan-400 w-full font-dynapuff py-10 -mt-20 md:-mt-35">
+
+      <section className="bg-cyan-400 text-black  flex items-center justify-center w-full">
+        <div className="md:w-5/6 xl:w-2/3 bg-yellow-300 border-4  border-x-0 items-center justify-center gap-4 p-4">
+          <h1 className="text-5xl font-dynapuff text-center mb-5">FAQ</h1>
+          <div className="grid grid-cols-1 gap-4">
+            <div className="flex flex-col border-4 border-black/50 p-2 text-lg">
+              <span className="font-dynapuff">
+                Q: Does the project need to be a code project?
+              </span>
+              <span className="font-medium">
+                A: Yes! Your project must have a public github repo and have
+                time tracked on Hackatime.
+              </span>
+            </div>
+            <div className="flex flex-col border-4 border-black/50 p-2 text-lg">
+              <span className="font-dynapuff">
+                Q: What can I learn from my partner/teacher?
+              </span>
+              <span className="font-medium flex-wrap">
+                A: Anything you like! You and your partner just have to make a
+                project out of it, and journal it so we know you have been
+                learning! Please note that you are required to journal the
+                learning process per week in order to make your hours count! If
+                you taught your partner something interesting... we MIGHT offer
+                better rates for you <img src={eyeshake} alt="" className="w-5"/>
+              </span>
+            </div>
+            <div className="flex flex-col border-4 border-black/50 p-2 text-lg">
+              <span className="font-dynapuff">
+                Q: Why should I do this when I can do other ysws(s) without the learning process?
+              </span>
+              <span className="font-medium">
+                A: Unlike other YSWS(s) where you're working alone or just building for the sake of building, this program is specifically designed for <b>skill transfer and collaboration between people</b>! No more wishing that you had their skills, start doing this with your friend so they can teach you their ways!
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-cyan-400 w-full font-dynapuff py-10">
         <div className="flex flex-col md:flex-row w-full bg-cyan-300 border-4 border-x-0 items-center justify-center gap-4 p-4">
-          <h1 className="text-4xl">Questions left?<br /> <u>Join our Slack channel</u></h1>
-          <button className="bg-yellow-300 p-4 rounded-full hover:scale-120 transition-all" onClick={(e) => {
-            e.preventDefault();
-            window.open("https://hackclub.enterprise.slack.com/archives/C0AG9ASJ5U4", "_blank");
-          }}>Open channel</button>
-          <button className="bg-red-300 p-4 rounded-full hover:scale-120 transition-all" onClick={(e) => {
-            e.preventDefault();
-            window.open("https://hackclub.com/slack", "_blank");
-          }}>Join Hack Club slack</button>
+          <h1 className="text-4xl">
+            Questions left?
+            <br /> <u>Join our Slack channel</u>
+          </h1>
+          <button
+            className="bg-yellow-300 p-4 rounded-full hover:scale-120 transition-all"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(
+                "https://hackclub.enterprise.slack.com/archives/C0AG9ASJ5U4",
+                "_blank",
+              );
+            }}
+          >
+            Open channel
+          </button>
+          <button
+            className="bg-red-300 p-4 rounded-full hover:scale-120 transition-all"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open("https://hackclub.com/slack", "_blank");
+            }}
+          >
+            Join Hack Club slack
+          </button>
         </div>
       </section>
 
