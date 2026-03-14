@@ -2,6 +2,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import PageHome from "@/pages/Home/Home";
 import Layout from "@/pages/Layout/Layout";
 import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "sonner";
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +12,7 @@ function App() {
         </Route>
       </Routes>
       <Analytics />
+      <Toaster />
     </BrowserRouter>
   );
 }
