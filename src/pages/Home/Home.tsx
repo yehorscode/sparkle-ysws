@@ -201,7 +201,7 @@ const PageHome = () => {
                 project out of it, and journal it so we know you have been
                 learning! Please note that you are required to journal the
                 learning process per week in order to make your hours count! If
-                you taught your partner something interesting... we MIGHT offer be
+                you taught your partner something interesting... we <span className="font-bold italic">MIGHT</span> offer be
                 <span className="whitespace-nowrap">
                   tter rates for you
                   <img src={eyeshake} alt="" className="ml-1 inline w-5" />
