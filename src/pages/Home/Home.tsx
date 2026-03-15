@@ -9,21 +9,29 @@ type CloudStepCardProps = {
   step: string;
   children: ReactNode;
   className?: string;
+  floatDelay?: string;
 };
 
 const CloudStepCard = ({
   step,
   children,
   className = "",
+  floatDelay = "0s",
 }: CloudStepCardProps) => {
   return (
-    <div
-      className={`mx-auto flex duration-75 transition-all w-full aspect-12/10 flex-col items-center justify-center rounded bg-size-[130%_auto] bg-center bg-no-repeat px-10 text-center sm:max-w-xl sm:bg-size-[120%_auto] sm:px-16 sm:py-10 md:max-w-2xl md:bg-size-[110%_auto] md:px-20 lg:max-w-2xl ${className}`}
-      style={{ backgroundImage: `url(${cloud})` }}
-    >
-      <div className="flex flex-col text-left w-7/10">
-        <span className="text-3xl font-bold sm:text-4xl">{step}.</span>
-        <span className="text-2xl leading-tight lg:text2xl">{children}</span>
+    <div className={`mx-auto w-full ${className}`}>
+      <div
+        className="cloud-float flex w-full aspect-12/10 flex-col items-center justify-center bg-center bg-no-repeat px-10 text-center transition-all duration-200 sm:bg-size-[120%_auto] sm:px-14 md:px-16"
+        style={{
+          backgroundImage: `url(${cloud})`,
+          backgroundSize: "130% auto",
+          animationDelay: floatDelay,
+        }}
+      >
+        <div className="flex w-7/10 flex-col text-left">
+          <span className="text-3xl font-bold sm:text-4xl">{step}.</span>
+          <span className="text-2xl leading-tight lg:text-[1.7rem]">{children}</span>
+        </div>
       </div>
     </div>
   );
@@ -136,47 +144,57 @@ const PageHome = () => {
       </section>
 
       <div className="bg-gradient-to-b from-cyan-200/80 via-cyan-300/65 to-cyan-400/80">
-        <section className="flex font-dynapuff min-h-screen w-full flex-col px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
-          <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 xl:flex-row">
-            <div className="flex w-full flex-col items-center">
-              <div className="flex items-center justify-center">
-                <span className="text-5xl text-white sm:text-6xl font-bold">
+        <section className="font-dynapuff w-full px-4 pt-18 pb-12 text-black sm:px-6 sm:pt-20 sm:pb-14 lg:px-10">
+          <div className="mx-auto w-full max-w-6xl">
+            <div className="mb-8 text-center sm:mb-10">
+              <div className="mb-3 flex items-center gap-4 sm:gap-6">
+                <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
+                <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">
                   What is sparkle? ✨
-                </span>
+                </h2>
+                <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
               </div>
-              {/* boxes for explainers */}
-              <div className="flex w-full -mt-10 flex-col -space-y-20 sm:-space-y-36 md:-space-y-50 lg:-space-y-45">
-                <CloudStepCard step="1">
-                  <b>Get a friend</b> and invite them to join you
-                </CloudStepCard>
-                <CloudStepCard step="2">
-                  <b>Learn together.</b> Make your friend teach you a new skill.
-                  Or maybe a new language?
-                </CloudStepCard>
-                <CloudStepCard step="3">
-                  <b>Track your progress</b> via{" "}
-                  <a
-                    href="https://hackatime.hackclub.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-[#FD3A4F]"
-                  >
-                    Hackatime
-                  </a>
-                </CloudStepCard>
-                <CloudStepCard step="4">
-                  <b>Earn cool prizes!</b> You and your friend earn a reward!
-                </CloudStepCard>
-              </div>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
+                A collaborative build sprint where friends teach each other,
+                ship fast, and unlock rewards together.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-y-2 md:grid-cols-2 md:gap-x-4 md:gap-y-3">
+              <CloudStepCard step="1" className="rotate-[-0.9deg]" floatDelay="0s">
+                <b>Get a friend</b> and invite them to join you.
+              </CloudStepCard>
+              <CloudStepCard step="2" className="rotate-[0.8deg]" floatDelay="0.9s">
+                <b>Learn together.</b> Make your friend teach you a new skill.
+                Or maybe a new language?
+              </CloudStepCard>
+              <CloudStepCard step="3" className="rotate-[0.5deg]" floatDelay="0.4s">
+                <b>Track your progress</b> via{" "}
+                <a
+                  href="https://hackatime.hackclub.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold underline text-[#FD3A4F]"
+                >
+                  Hackatime
+                </a>
+                .
+              </CloudStepCard>
+              <CloudStepCard step="4" className="rotate-[-0.7deg]" floatDelay="1.2s">
+                <b>Earn cool prizes.</b> You and your friend both get rewarded.
+              </CloudStepCard>
             </div>
           </div>
         </section>
 
-        <section className="text-black flex items-center justify-center w-full py-4">
-          <div className="w-full max-w-5xl mx-auto border-4 border-white/50 bg-white/20 items-center justify-center gap-4 p-4">
-          <h1 className="text-5xl font-dynapuff text-center mb-5">FAQ</h1>
-          <div className="grid grid-cols-1 gap-4">
-            <div className="flex flex-col border-4 border-black/50 p-2 text-lg">
+        <section className="text-black flex items-center justify-center w-full px-4 py-8 sm:px-6 sm:py-10">
+          <div className="w-full max-w-5xl">
+          <div className="mb-6 flex items-center gap-4 sm:gap-6">
+            <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
+            <h2 className="font-dynapuff text-3xl sm:text-4xl md:text-5xl">FAQ</h2>
+            <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:gap-5">
+            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
               <span className="font-dynapuff">
                 Q: Does the project need to be a code project?
               </span>
@@ -192,7 +210,7 @@ const PageHome = () => {
                   </a>.
               </span>
             </div>
-            <div className="flex flex-col border-4 border-black/50 p-2 text-lg">
+            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
               <span className="font-dynapuff">
                 Q: What can I learn from my partner/teacher?
               </span>
@@ -208,7 +226,7 @@ const PageHome = () => {
                 </span>
               </span>
             </div>
-            <div className="flex flex-col border-4 border-black/50 p-2 text-lg">
+            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
               <span className="font-dynapuff">
                 Q: Why should I do this when I can do other ysws(s) without the learning process?
               </span>
