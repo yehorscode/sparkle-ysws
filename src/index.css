@@ -133,3 +133,19 @@
     @apply font-sans;
   }
 }
+
+@keyframes cloud-float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.cloud-float {
+  animation: cloud-float 5.5s ease-in-out infinite;
+}
