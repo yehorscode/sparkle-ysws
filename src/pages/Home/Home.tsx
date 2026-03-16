@@ -413,7 +413,7 @@ const PageHome = () => {
             <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
           </div>
           <p className="mb-10 text-center text-base text-black/70 sm:text-lg max-w-2xl mx-auto">
-            Meet the people behind Sparkle — we're a group of people who believe the best way to learn is with a friend by your side.
+            Meet the team behind Sparkle, a group of people who believe the best way to learn is with a friend by your side.
           </p>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {[
