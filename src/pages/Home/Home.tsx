@@ -146,7 +146,7 @@ const PageHome = () => {
           <h1 className="font-dynapuff text-6xl font-bold text-white drop-shadow-lg sm:text-7xl md:text-8xl xl:text-9xl" style={{ textShadow: '0 0 4px rgba(0,0,0,0.3), 0 0 8px rgba(0,0,0,0.2)' }}>
             Sparkle 
           </h1>
-          <p className="font-dynapuff max-w-xl text-lg text-white/90 drop-shadow sm:text-xl md:text-2xl">
+          <p className="font-dynapuff max-w-xl text-lg text-gray-600 drop-shadow sm:text-xl md:text-2xl">
             A YSWS where friends teach each other skills, ship a project, and get rewarded together.
           </p>
 
