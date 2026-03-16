@@ -3,6 +3,14 @@ import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_full_1920x1080.webp";
 import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
 import { type ReactNode, useEffect, useState } from "react";
 import cloud from "@/assets/cloud.png";
+import yehorPfp from "@/assets/yehor.jpeg";
+import zookPfp from "@/assets/zook.png";
+import candyPfp from "@/assets/candy.png";
+import ansonPfp from "@/assets/anson.jpeg";
+import overcooked2 from "@/assets/overcooked2.png";
+import picopark from "@/assets/picopark.jpg";
+import dittoplushie from "@/assets/dittoplushie.jpg";
+import ittakestwo from "@/assets/ittakestwo.jpg";
 import { toast } from "sonner";
 import eyeshake from "@/assets/eyeshake.gif";
 type CloudStepCardProps = {
@@ -11,7 +19,6 @@ type CloudStepCardProps = {
   className?: string;
   floatDelay?: string;
 };
-
 const CloudStepCard = ({
   step,
   children,
@@ -39,9 +46,9 @@ const CloudStepCard = ({
 
 const PageHome = () => {
   const [email, setEmail] = useState("");
+  const rsvpHelperApiKey = import.meta.env.VITE_RSVP_HELPER_API_KEY ?? "";
   const bg_1920x1080 = sparkle_bg_1920x1080;
   const bg_2560x1440 = sparkle_bg_2560x1440;
-  const rsvpHelperApiKey = "rsvpk_jqtgPur85swbADCjzvjpXBUCo01dLsPR";
   // const [sparkleClicks, setSparkleClicks] = useState(0);
   const selectBackground = (width: number) =>
     width >= 2200 ? bg_2560x1440 : bg_1920x1080;
@@ -195,7 +202,7 @@ const PageHome = () => {
             <div className="mb-8 text-center sm:mb-10">
               <div className="mb-3 flex items-center gap-4 sm:gap-6">
                 <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
-                <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">
+                <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
                   What is sparkle? ✨
                 </h2>
                 <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
@@ -232,11 +239,86 @@ const PageHome = () => {
           </div>
         </section>
 
+        <section className="w-full font-dynapuff px-4 pb-8 text-black sm:px-6 sm:pb-10 lg:px-10">
+          <div className="mx-auto w-full max-w-5xl">
+            <div className="mb-8 flex items-center gap-4 sm:gap-6">
+              <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
+              <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
+                Potential Prizes
+              </h2>
+              <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  image: ittakestwo,
+                  fallback: "1",
+                  title: "It Takes Two",
+                  description: "A wild Co-Op 3D Action Adventure Platformer that will make your head spin. Was the first prize we ever thought of as a prize because of its 2-player nature.",
+                },
+                {
+                  image: overcooked2,
+                  fallback: "2",
+                  title: "Overcooked 2",
+                  description: "An awesome cooking game for 1-4 players. Zook did not hit his brother over a missed burger order last time they played.",
+                },
+                {
+                  image: picopark,
+                  fallback: "3",
+                  title: "Pico Park",
+                  description: "A cooperative multiplayer, action-puzzle independent game. Perfect with friends.",
+
+                },
+                {
+                  image: dittoplushie,
+                  fallback: "4",
+                  title: "A Ditto Plushie",
+                  description: "A cute plushie perfect for cuddling. You should definitely get this.",
+                },
+                {
+                  image: "",
+                  fallback: "5",
+                  title: "More Prizes",
+                  description: "We will decide on more prizes in the future!",
+                },
+                {
+                  image: "",
+                  fallback: "6",
+                  title: "More Prizes",
+                  description: "We will decide on more prizes in the future!",
+                },
+              ].map(({ image, fallback, title, description }) => (
+                <div
+                  key={title}
+                  className="flex flex-col border-4 border-black/50 bg-white/20 p-4"
+                >
+                  <div className="flex justify-center">
+                    {image ? (
+                      <img
+                        src={image}
+                        alt={title}
+                        className="w-48 aspect-square object-cover object-center border-4 border-black/20"
+                      />
+                    ) : (
+                      <div className="flex w-48 aspect-square items-center justify-center border-4 border-black/20 bg-cyan-100 text-4xl font-bold text-black/50">
+                        {fallback}
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="mt-3 text-xl font-bold">{title}</h3>
+                  <p className="mt-1 text-base text-black/80">{description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="text-black flex items-center justify-center w-full px-4 py-8 sm:px-6 sm:py-10">
           <div className="w-full max-w-5xl">
           <div className="mb-6 flex items-center gap-4 sm:gap-6">
             <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
-            <h2 className="font-dynapuff text-3xl sm:text-4xl md:text-5xl">FAQ</h2>
+            <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">FAQ</h2>
             <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:gap-5">
@@ -314,7 +396,7 @@ const PageHome = () => {
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center gap-4 sm:gap-6">
             <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
-            <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">The Team 🌟</h2>
+            <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">The Team</h2>
             <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
           </div>
           <p className="mb-10 text-center text-base text-black/70 sm:text-lg max-w-2xl mx-auto">
@@ -328,9 +410,9 @@ const PageHome = () => {
                 name: "Yehor",
                 handle: "@yehor",
                 role: "Developer",
-                bio: "Made the website from scratch. Owns the repo and drew the clouds.",
-                quote: "{insert wise quote here}",
-                photo: "src/assets/yehor.jpeg",
+                bio: "Made the website from scratch. Owns the repo and tried to draw the clouds. Claims to not have a quote but here we are.",
+                quote: "Maybe try making a meta or a post in hq",
+                photo: yehorPfp,
               },
               {
                 initials: "Z",
@@ -338,9 +420,9 @@ const PageHome = () => {
                 name: "Zac T",
                 handle: "@zook",
                 role: "Lead Organizer and Developer",
-                bio: "Has no skills whatsover. Came up with the idea on his bed and fell off his bed to jot down the idea.",
+                bio: "Has no skills whatsover. Came up with the idea on his bed and fell off his bed trying to write it somewhere. Now knows what TypeScript and React are.",
                 quote: "chat will drinking 3 coffees in a day kill me",
-                photo: "src/assets/zook.png",
+                photo: zookPfp,
               },
               {
                 initials: "C",
@@ -349,8 +431,8 @@ const PageHome = () => {
                 handle: "@candy",
                 role: "Artist",
                 bio: "Created the background for the website and designed the two mascots!",
-                quote: "{insert another wise quote here}",
-                photo: "src/assets/candy.png",
+                quote: "what if the blue cat was just radioactive water and the other cat is like a banana or something",
+                photo: candyPfp,
               },
               {
                 initials: "A",
@@ -360,7 +442,7 @@ const PageHome = () => {
                 role: "The Unemployed",
                 bio: "Decides to make a PR because he thinks the clouds were too spread out on the previous version of the website.",
                 quote: "I'd recommend removing ur jd Vance meme folder before applying for the visa",
-                photo: "src/assets/anson.jpeg",
+                photo: ansonPfp,
               },
             ].map(({ initials, color, name, handle, role, bio, quote, photo }) => (
               <div
