@@ -12,6 +12,7 @@ import overcooked2 from "@/assets/overcooked2.png";
 import picopark from "@/assets/picopark.jpg";
 import dittoplushie from "@/assets/dittoplushie.jpg";
 import ittakestwo from "@/assets/ittakestwo.jpg";
+import pikmin4 from "@/assets/pikmin4.jpg";
 import { toast } from "sonner";
 import eyeshake from "@/assets/eyeshake.gif";
 
@@ -269,10 +270,10 @@ const PageHome = () => {
                   description: "A cute plushie perfect for cuddling. You should definitely get this.",
                 },
                 {
-                  image: "",
+                  image: pikmin4,
                   fallback: "5",
-                  title: "More Prizes",
-                  description: "We will decide on more prizes in the future!",
+                  title: "Pikmin 4",
+                  description: "A really popular nintendo switch game. Features cute little creatures called the \"Pikmins\".",
                 },
                 {
                   image: "",
