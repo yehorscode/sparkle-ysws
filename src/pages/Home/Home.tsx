@@ -528,7 +528,7 @@ const PageHome = () => {
       <section className="w-full bg-black font-dynapuff">
         <div className="p-2 text-center">
           <span className="text-xs sm:text-sm text-gray-400">
-            Made with ✨ by the Sparkle team. Go join #zacs-corner :){" "}
+            Made with ✨ by the Sparkle team. Project Idea inspired by Thomas. "In life we are always learning"{" "}
           </span>
         </div>
       </section>
