@@ -248,7 +248,7 @@ const PageHome = () => {
                   image: ittakestwo,
                   fallback: "1",
                   title: "It Takes Two",
-                  description: "A wild Co-Op 3D Action Adventure Platformer that will make your head spin. Was the first prize we ever thought of as a prize because of its 2-player nature.",
+                  description: "A wild Co-Op 3D Action Adventure Platformer that will make your head spin. Was the first thing we ever thought of as a prize because of its 2-player nature.",
                 },
                 {
                   image: overcooked2,
