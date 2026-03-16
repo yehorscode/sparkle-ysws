@@ -230,7 +230,7 @@ const PageHome = () => {
                 >
                   Hackatime
                 </a>
-                .
+                , and journal your learning process!
               </CloudStepCard>
               <CloudStepCard step="4" className="rotate-[-0.7deg]" floatDelay="1.2s">
                 <b>Earn cool prizes.</b> You and your friend both get rewarded.
@@ -324,6 +324,14 @@ const PageHome = () => {
           <div className="grid grid-cols-1 gap-4 sm:gap-5">
             <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
               <span className="font-dynapuff">
+                Q: What do I do if I don't have a friend?
+              </span>
+              <span className="font-medium">
+                A: We <b>can</b> find one for you, but we highly encourage you to talk more on Slack and we're sure that someone will be willing to pair up with you!
+              </span>
+            </div>
+            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
+              <span className="font-dynapuff">
                 Q: Does the project need to be a code project?
               </span>
               <span className="font-medium">
@@ -347,9 +355,9 @@ const PageHome = () => {
                 project out of it, and journal it so we know you have been
                 learning! Please note that you are required to journal the
                 learning process per week in order to make your hours count! If
-                you taught your partner something interesting... we <span className="font-bold italic">MIGHT</span> offer be
+                you taught your partner something interesting... we <span className="font-bold italic">might</span> give yo
                 <span className="whitespace-nowrap">
-                  tter rates for you
+                  u a special prize 
                   <img src={eyeshake} alt="" className="ml-1 inline w-5" />
                 </span>
               </span>
