@@ -136,37 +136,23 @@ const PageHome = () => {
         className="relative flex h-[85vh] w-full justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBackground})` }}
       >
-        <div className="absolute left-1/2 top-3 -translate-x-1/2 sm:top-4 w-30">
-          <img
-            src={hc_flag}
-            alt="Hack Club flag transparent white"
-            width={"120px"}
-          />
-
-          {/* <a href="https://hackclub.com/">
-            <img
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 10,
-                border: "none",
-                width: "256px",
-                zIndex: 999,
-              }}
-              src="https://assets.hackclub.com/flag-orpheus-top.svg"
-              alt="Hack Club"
-            />
-          </a> */}
+        {/* HC flag — top left */}
+        <div className="absolute left-4 top-3 sm:top-4 w-24 sm:w-28">
+          <img src={hc_flag} alt="Hack Club flag" width="120px" />
         </div>
-        <div className="self-start md:w-3/4 mt-30 sm:mt-28 md:mt-26 lg:mt-30 xl:mt-40 flex flex-col  text-[#ffffff] text-shadow-md bg-amber-300/80 md:rounded-2xl p-5">
-          <span className="font-dynapuff opacity-80 sm:text-lg md:text-xl">
-            RSVP form available
-          </span>
-          <h1 className="font-dynapuff text-2xl font-bold leading-tight sm:text-3xl md:text-4xl xl:text-5xl">
-            Learn something from your friends, ship a project, and get rewards!
+
+        {/* Centered hero content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-start pt-12 text-center px-4 gap-3 sm:pt-16 md:pt-20">
+          <h1 className="font-dynapuff text-6xl font-bold text-white drop-shadow-lg sm:text-7xl md:text-8xl xl:text-9xl" style={{ textShadow: '0 0 4px rgba(0,0,0,0.3), 0 0 8px rgba(0,0,0,0.2)' }}>
+            Sparkle 
           </h1>
+          <p className="font-dynapuff max-w-xl text-lg text-white/90 drop-shadow sm:text-xl md:text-2xl">
+            A YSWS where friends teach each other skills, ship a project, and get rewarded together.
+          </p>
+
+          {/* RSVP form */}
           <form
-            className="mt-4 flex rounded bg-accent/50 p-2 text-black sm:mt-5"
+            className="mt-2 flex w-full max-w-md rounded bg-white/90 p-2 text-black shadow-lg"
             onSubmit={(e) => {
               e.preventDefault();
               void rsvp_handler(email);
@@ -174,14 +160,13 @@ const PageHome = () => {
           >
             <input
               placeholder="name@email.com"
-              className="font-dynapuff flex-1 text-base outline-none placeholder:text-black/50 placeholder:text-base sm:text-lg sm:placeholder:text-lg md:text-xl md:placeholder:text-xl"
+              className="font-dynapuff flex-1 bg-transparent text-base outline-none placeholder:text-black/50 sm:text-lg"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <button
               type="submit"
-              className="border-2 hover:scale-110 transition-all border-black p-2 text-base font-bold hover:cursor-pointer sm:text-lg md:text-xl"
-              // onClick={() => rsvp_handler(email)}
+              className="border-2 border-black px-3 py-1 text-base font-bold hover:scale-110 transition-all hover:cursor-pointer sm:text-lg"
             >
               RSVP
             </button>
@@ -329,6 +314,14 @@ const PageHome = () => {
             <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:gap-5">
+             <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
+              <span className="font-dynapuff">
+                Q: Am I eligible to participate?
+              </span>
+              <span className="font-medium">
+                A: You are eligible to participate in Sparkle if you are 18 years old or younger. You will need to verify your identity before being able to get prizes shipped to you.
+              </span>
+            </div>
             <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
               <span className="font-dynapuff">
                 Q: What do I do if I don't have a friend?
@@ -463,7 +456,7 @@ const PageHome = () => {
                 color: "bg-gray-400",
                 name: "Grayson V",
                 handle: "@thirtyseven",
-                role: "Backend Dev",
+                role: "Backend Developer",
                 bio: "Good at writing and doing backend stuff.",
                 quote: "also i hate whatever slack is using for spellcheck",
                 photo: graysonPfp,
