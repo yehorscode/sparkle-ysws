@@ -41,6 +41,7 @@ const PageHome = () => {
   const [email, setEmail] = useState("");
   const bg_1920x1080 = sparkle_bg_1920x1080;
   const bg_2560x1440 = sparkle_bg_2560x1440;
+  const rsvpHelperApiKey = "rsvpk_jqtgPur85swbADCjzvjpXBUCo01dLsPR";
   // const [sparkleClicks, setSparkleClicks] = useState(0);
   const selectBackground = (width: number) =>
     width >= 2200 ? bg_2560x1440 : bg_1920x1080;
@@ -64,7 +65,7 @@ const PageHome = () => {
     };
   }, []);
 
-  function rsvp_handler(email: string) {
+  async function rsvp_handler(email: string) {
     if (!email.includes("@")) {
       toast.error("Please enter a valid email address");
       return;
@@ -73,7 +74,52 @@ const PageHome = () => {
       toast.error("Please enter a valid email address");
       return;
     }
-    window.location.href = `https://forms.fillout.com/t/e2tRAi4Lh4us?email=${encodeURIComponent(email)}`;
+
+    const searchParams = new URLSearchParams({
+      email,
+    });
+
+    try {
+      const response = await fetch(
+        "https://rsvphelper.anscg.net/api/v1/slack/users/by-email",
+        {
+          method: "POST",
+          headers: {
+            "x-api-key": rsvpHelperApiKey,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ emails: [email] }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`RSVP helper lookup failed with status ${response.status}`);
+      }
+
+      const data: {
+        results?: Array<{
+          ok?: boolean;
+          found?: boolean;
+          slackId?: string;
+          realName?: string;
+        }>;
+      } = await response.json();
+
+      const firstResult = data.results?.[0];
+
+      if (firstResult?.ok && firstResult.found) {
+        if (firstResult.realName) {
+          searchParams.set("name", firstResult.realName);
+        }
+        if (firstResult.slackId) {
+          searchParams.set("slackid", firstResult.slackId);
+        }
+      }
+    } catch (error) {
+      console.error("RSVP helper lookup failed", error);
+    }
+
+    window.location.href = `https://forms.fillout.com/t/e2tRAi4Lh4us?${searchParams.toString()}`;
   }
   return (
     <div className="w-full">
@@ -114,7 +160,7 @@ const PageHome = () => {
             className="mt-4 flex rounded bg-accent/50 p-2 text-black sm:mt-5"
             onSubmit={(e) => {
               e.preventDefault();
-              rsvp_handler(email);
+              void rsvp_handler(email);
             }}
           >
             <input
@@ -364,7 +410,7 @@ const PageHome = () => {
             className="mt-4 w-1/2 flex rounded bg-white p-2 text-black sm:mt-5"
             onSubmit={(e) => {
               e.preventDefault();
-              rsvp_handler(email);
+              void rsvp_handler(email);
             }}
           >
             <input
