@@ -7,6 +7,7 @@ import yehorPfp from "@/assets/yehor.jpeg";
 import zookPfp from "@/assets/zook.png";
 import candyPfp from "@/assets/candy.png";
 import ansonPfp from "@/assets/anson.jpeg";
+import graysonPfp from "@/assets/thirtyseven.jpeg";
 import overcooked2 from "@/assets/overcooked2.png";
 import picopark from "@/assets/picopark.jpg";
 import dittoplushie from "@/assets/dittoplushie.jpg";
@@ -457,8 +458,16 @@ const PageHome = () => {
                 bio: "Decides to make a PR because he thinks the clouds were too spread out on the previous version of the website.",
                 quote: "I'd recommend removing ur jd Vance meme folder before applying for the visa",
                 photo: ansonPfp,
-              },
-            ].map(({ initials, color, name, handle, role, bio, quote, photo }) => (
+              },{
+                initials: "G",
+                color: "bg-gray-400",
+                name: "Grayson V",
+                handle: "@thirtyseven",
+                role: "Backend Dev",
+                bio: "Good at writing and doing backend stuff.",
+                quote: "{insert wise quote here}",
+                photo: graysonPfp,
+              },            ].map(({ initials, color, name, handle, role, bio, quote, photo }) => (
               <div
                 key={handle}
                 className="flex flex-col border-4 border-black/50 bg-white/20 hover:scale-105 transition-transform duration-200"
