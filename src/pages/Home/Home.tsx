@@ -208,8 +208,8 @@ const PageHome = () => {
                 <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
               </div>
               <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
-                A collaborative build sprint where friends teach each other,
-                ship fast, and unlock rewards together.
+                A You Ship, We Ship (YSWS) where friends teach each other skills,
+                ship a project, and get rewards together!
               </p>
             </div>
             <div className="grid grid-cols-1 gap-y-2 md:grid-cols-2 md:gap-x-4 md:gap-y-3">
@@ -239,14 +239,19 @@ const PageHome = () => {
           </div>
         </section>
 
-        <section className="w-full font-dynapuff px-4 pb-8 text-black sm:px-6 sm:pb-10 lg:px-10">
-          <div className="mx-auto w-full max-w-5xl">
-            <div className="mb-8 flex items-center gap-4 sm:gap-6">
+        <section className="font-dynapuff w-full px-4 pb-8 text-black sm:px-6 sm:pb-10 lg:px-10">
+          <div className="mx-auto w-full max-w-6xl">
+            <div className="mb-8 text-center sm:mb-10">
+              <div className="mb-3 flex items-center gap-4 sm:gap-6">
               <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
               <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
                 Potential Prizes
               </h2>
               <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
+              </div>
+              <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
+                Some great prizes that you can get by learning something with your friend and making a project with it!
+              </p>
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
