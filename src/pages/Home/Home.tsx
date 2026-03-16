@@ -458,7 +458,7 @@ const PageHome = () => {
                 handle: "@thirtyseven",
                 role: "Backend Developer",
                 bio: "Good at writing and doing backend stuff.",
-                quote: "also i hate whatever slack is using for spellcheck",
+                quote: "why are we committing api keys to a public repo",
                 photo: graysonPfp,
               },            ].map(({ initials, color, name, handle, role, bio, quote, photo }) => (
               <div
