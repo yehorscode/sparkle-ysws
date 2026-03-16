@@ -13,6 +13,7 @@ import dittoplushie from "@/assets/dittoplushie.jpg";
 import ittakestwo from "@/assets/ittakestwo.jpg";
 import { toast } from "sonner";
 import eyeshake from "@/assets/eyeshake.gif";
+
 type CloudStepCardProps = {
   step: string;
   children: ReactNode;
@@ -46,9 +47,9 @@ const CloudStepCard = ({
 
 const PageHome = () => {
   const [email, setEmail] = useState("");
-  const rsvpHelperApiKey = import.meta.env.VITE_RSVP_HELPER_API_KEY ?? "";
   const bg_1920x1080 = sparkle_bg_1920x1080;
   const bg_2560x1440 = sparkle_bg_2560x1440;
+  const rsvpHelperApiKey = "rsvpk_jqtgPur85swbADCjzvjpXBUCo01dLsPR";
   // const [sparkleClicks, setSparkleClicks] = useState(0);
   const selectBackground = (width: number) =>
     width >= 2200 ? bg_2560x1440 : bg_1920x1080;
