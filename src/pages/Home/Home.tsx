@@ -3,10 +3,10 @@ import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_full_1920x1080.webp";
 import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
 import { type ReactNode, useEffect, useState } from "react";
 import cloud from "@/assets/cloud.png";
-import yehorPfp from "@/assets/yehor.jpeg";
-import zookPfp from "@/assets/zook.png";
-import candyPfp from "@/assets/candy.png";
-import ansonPfp from "@/assets/anson.jpeg";
+import yehorPfp from "@/assets/yehor.webp";
+import zookPfp from "@/assets/zook.webp";
+import candyPfp from "@/assets/candy.webp";
+import ansonPfp from "@/assets/anson.webp";
 import graysonPfp from "@/assets/thirtyseven.jpeg";
 import overcooked2 from "@/assets/overcooked2.png";
 import picopark from "@/assets/picopark.jpg";
@@ -17,6 +17,7 @@ import sparkles from "@/assets/roundsparkles.png";
 import { toast } from "sonner";
 import eyeshake from "@/assets/eyeshake.gif";
 import { Moon, Sun } from "@phosphor-icons/react";
+import { useTheme } from "@/components/theme-provider";
 
 type CloudStepCardProps = {
   step: string;
@@ -49,27 +50,12 @@ const CloudStepCard = ({
   );
 };
 
-const THEME_STORAGE_KEY = "sparkle-theme";
 
 const PageHome = () => {
   const [email, setEmail] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
-
-    const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-    if (savedTheme === "dark") {
-      return true;
-    }
-    if (savedTheme === "light") {
-      return false;
-    }
-
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
-  });
   const bg_1920x1080 = sparkle_bg_1920x1080;
   const bg_2560x1440 = sparkle_bg_2560x1440;
+  const { theme, setTheme } = useTheme();
   const rsvpHelperApiKey = "rsvpk_jqtgPur85swbADCjzvjpXBUCo01dLsPR";
   // const [sparkleClicks, setSparkleClicks] = useState(0);
   const selectBackground = (width: number) =>
@@ -93,18 +79,6 @@ const PageHome = () => {
       window.removeEventListener("resize", updateBackground);
     };
   }, []);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isDarkMode) {
-      root.classList.add("dark");
-      window.localStorage.setItem(THEME_STORAGE_KEY, "dark");
-      return;
-    }
-
-    root.classList.remove("dark");
-    window.localStorage.setItem(THEME_STORAGE_KEY, "light");
-  }, [isDarkMode]);
 
   async function rsvp_handler(email: string) {
     if (!email.includes("@")) {
@@ -171,11 +145,11 @@ const PageHome = () => {
         <button
           type="button"
           aria-label="Toggle dark mode"
-          onClick={() => setIsDarkMode((current) => !current)}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="absolute right-4 top-3 z-10 inline-flex items-center gap-2 rounded-full border-2 border-black/30 bg-white/85 px-3 py-1.5 font-dynapuff text-sm text-black shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-white sm:top-4"
         >
-          {isDarkMode ? <Moon size={16} weight="fill" /> : <Sun size={16} weight="fill" />}
-          <span>{isDarkMode ? "Dark" : "Light"}</span>
+          {theme === "dark" ? <Moon size={16} weight="fill" /> : <Sun size={16} weight="fill" />}
+          <span>{theme === "dark" ? "Dark" : "Light"}</span>
         </button>
 
         {/* HC flag — top left */}
@@ -188,7 +162,7 @@ const PageHome = () => {
           <h1 className="font-dynapuff text-6xl font-bold text-white drop-shadow-lg sm:text-7xl md:text-8xl xl:text-9xl" style={{ textShadow: '0 0 4px rgba(0,0,0,0.3), 0 0 8px rgba(0,0,0,0.2)' }}>
             Sparkle
           </h1>
-          <p className="font-dynapuff max-w-xl text-lg text-gray-600 dark:text-cyan-50 drop-shadow sm:text-xl md:text-2xl">
+          <p className="font-dynapuff max-w-xl text-lg text-gray-800 text-shadow-lg dark:text-white drop-shadow sm:text-xl md:text-2xl">
             A YSWS where friends teach each other skills, ship a project, and get rewarded together.
           </p>
 
@@ -351,9 +325,9 @@ const PageHome = () => {
         <section className="text-black flex items-center justify-center w-full px-4 py-8 sm:px-6 sm:py-10 dark:text-white">
           <div className="w-full max-w-5xl">
           <div className="mb-6 flex items-center gap-4 sm:gap-6">
-            <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
+            <span className="h-[3px] flex-1 bg-linear-to-r from-black/70 to-transparent" />
             <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">FAQ</h2>
-            <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
+            <span className="h-[3px] flex-1 bg-linear-to-r from-transparent to-black/70" />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:gap-5">
              <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
@@ -445,9 +419,9 @@ const PageHome = () => {
       <section className="w-full font-dynapuff py-12 px-4 sm:px-6 lg:px-10 text-black dark:text-white">
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center gap-4 sm:gap-6">
-            <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
+            <span className="h-[3px] flex-1 bg-linear-to-r from-black/70 to-transparent" />
             <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">The Team</h2>
-            <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
+            <span className="h-[3px] flex-1 bg-linear-to-r from-transparent to-black/70" />
           </div>
           <p className="mb-10 text-center text-base text-black/70 sm:text-lg max-w-2xl mx-auto dark:text-white/75">
             Meet the team behind Sparkle, a group of people who believe the best way to learn is with a friend by your side.

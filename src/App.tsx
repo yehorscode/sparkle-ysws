@@ -3,14 +3,17 @@ import PageHome from "@/pages/Home/Home";
 import Layout from "@/pages/Layout/Layout";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/theme-provider";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<PageHome />} />
-        </Route>
-      </Routes>
+      <ThemeProvider storageKey="vite-ui-theme" defaultTheme="dark">
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<PageHome />} />
+          </Route>
+        </Routes>
+      </ThemeProvider>
       <Analytics />
       <Toaster />
     </BrowserRouter>
@@ -18,4 +21,3 @@ function App() {
 }
 
 export default App;
-
