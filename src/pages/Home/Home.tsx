@@ -214,7 +214,7 @@ const PageHome = () => {
             </button>
           </form>
         </div>
-        <span className="absolute bottom-5 text-xl text-cyan-500 drop-shadow-xl">
+        <span className="absolute bottom-5 text-xl text-[#515441] drop-shadow-xl">
           Scroll down to learn more!
         </span>
         {/* <span
@@ -225,18 +225,18 @@ const PageHome = () => {
         </span> */}
       </section>
 
-      <div className="bg-gradient-to-b from-cyan-200/80 via-cyan-300/65 to-cyan-400/80 transition-colors dark:from-[#6c7a88] dark:via-slate-950 dark:to-slate-900">
+      <div className="bg-gradient-to-b from-[#f3e9b2] via-cyan-300/65 to-[#8df1fe] transition-colors dark:from-[#f3e9b2] dark:via-slate-950 dark:to-slate-900">
         <section className="font-dynapuff w-full px-4 pt-18 pb-12 text-black sm:px-6 sm:pt-20 sm:pb-14 lg:px-10">
           <div className="mx-auto w-full max-w-6xl">
             <div className="mb-8 text-center sm:mb-10">
               <div className="mb-3 flex items-center gap-4 sm:gap-6">
                 <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
-                <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl dark:text-white/80">
+                <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
                   <img src={sparkles} alt="" className="relative -top-1 ml-1 inline w-15" /> What is Sparkle? <img src={sparkles} alt="" className="relative -top-1 ml-1 inline w-15" />
                 </h2>
                 <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
               </div>
-              <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg dark:text-white/80">
+              <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
                 A You Ship, We Ship (YSWS) where friends teach each other skills,
                 ship a project, and get rewards together!
               </p>
