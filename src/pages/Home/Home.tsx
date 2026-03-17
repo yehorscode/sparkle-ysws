@@ -13,8 +13,10 @@ import picopark from "@/assets/picopark.jpg";
 import dittoplushie from "@/assets/dittoplushie.jpg";
 import ittakestwo from "@/assets/ittakestwo.jpg";
 import pikmin4 from "@/assets/pikmin4.jpg";
+import sparkles from "@/assets/roundsparkles.png";
 import { toast } from "sonner";
 import eyeshake from "@/assets/eyeshake.gif";
+import { Moon, Sun } from "@phosphor-icons/react";
 
 type CloudStepCardProps = {
   step: string;
@@ -47,8 +49,25 @@ const CloudStepCard = ({
   );
 };
 
+const THEME_STORAGE_KEY = "sparkle-theme";
+
 const PageHome = () => {
   const [email, setEmail] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+    if (savedTheme === "dark") {
+      return true;
+    }
+    if (savedTheme === "light") {
+      return false;
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
   const bg_1920x1080 = sparkle_bg_1920x1080;
   const bg_2560x1440 = sparkle_bg_2560x1440;
   const rsvpHelperApiKey = "rsvpk_jqtgPur85swbADCjzvjpXBUCo01dLsPR";
@@ -74,6 +93,18 @@ const PageHome = () => {
       window.removeEventListener("resize", updateBackground);
     };
   }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDarkMode) {
+      root.classList.add("dark");
+      window.localStorage.setItem(THEME_STORAGE_KEY, "dark");
+      return;
+    }
+
+    root.classList.remove("dark");
+    window.localStorage.setItem(THEME_STORAGE_KEY, "light");
+  }, [isDarkMode]);
 
   async function rsvp_handler(email: string) {
     if (!email.includes("@")) {
@@ -137,6 +168,16 @@ const PageHome = () => {
         className="relative flex h-[85vh] w-full justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBackground})` }}
       >
+        <button
+          type="button"
+          aria-label="Toggle dark mode"
+          onClick={() => setIsDarkMode((current) => !current)}
+          className="absolute right-4 top-3 z-10 inline-flex items-center gap-2 rounded-full border-2 border-black/30 bg-white/85 px-3 py-1.5 font-dynapuff text-sm text-black shadow-md backdrop-blur-sm transition hover:scale-105 hover:bg-white sm:top-4"
+        >
+          {isDarkMode ? <Moon size={16} weight="fill" /> : <Sun size={16} weight="fill" />}
+          <span>{isDarkMode ? "Dark" : "Light"}</span>
+        </button>
+
         {/* HC flag — top left */}
         <div className="absolute left-4 top-3 sm:top-4 w-24 sm:w-28">
           <img src={hc_flag} alt="Hack Club flag" width="120px" />
@@ -145,9 +186,9 @@ const PageHome = () => {
         {/* Centered hero content */}
         <div className="absolute inset-0 flex flex-col items-center justify-start pt-12 text-center px-4 gap-3 sm:pt-16 md:pt-20">
           <h1 className="font-dynapuff text-6xl font-bold text-white drop-shadow-lg sm:text-7xl md:text-8xl xl:text-9xl" style={{ textShadow: '0 0 4px rgba(0,0,0,0.3), 0 0 8px rgba(0,0,0,0.2)' }}>
-            Sparkle 
+            Sparkle
           </h1>
-          <p className="font-dynapuff max-w-xl text-lg text-gray-600 drop-shadow sm:text-xl md:text-2xl">
+          <p className="font-dynapuff max-w-xl text-lg text-gray-600 dark:text-cyan-50 drop-shadow sm:text-xl md:text-2xl">
             A YSWS where friends teach each other skills, ship a project, and get rewarded together.
           </p>
 
@@ -184,18 +225,18 @@ const PageHome = () => {
         </span> */}
       </section>
 
-      <div className="bg-gradient-to-b from-cyan-200/80 via-cyan-300/65 to-cyan-400/80">
+      <div className="bg-gradient-to-b from-cyan-200/80 via-cyan-300/65 to-cyan-400/80 transition-colors dark:from-[#6c7a88] dark:via-slate-950 dark:to-slate-900">
         <section className="font-dynapuff w-full px-4 pt-18 pb-12 text-black sm:px-6 sm:pt-20 sm:pb-14 lg:px-10">
           <div className="mx-auto w-full max-w-6xl">
             <div className="mb-8 text-center sm:mb-10">
               <div className="mb-3 flex items-center gap-4 sm:gap-6">
                 <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
-                <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
-                  What is sparkle? ✨
+                <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl dark:text-white/80">
+                  <img src={sparkles} alt="" className="relative -top-1 ml-1 inline w-15" /> What is Sparkle? <img src={sparkles} alt="" className="relative -top-1 ml-1 inline w-15" />
                 </h2>
                 <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
               </div>
-              <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
+              <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg dark:text-white/80">
                 A You Ship, We Ship (YSWS) where friends teach each other skills,
                 ship a project, and get rewards together!
               </p>
@@ -227,7 +268,7 @@ const PageHome = () => {
           </div>
         </section>
 
-        <section className="font-dynapuff w-full px-4 pb-8 text-black sm:px-6 sm:pb-10 lg:px-10">
+        <section className="font-dynapuff w-full px-4 pb-8 text-black sm:px-6 sm:pb-10 lg:px-10 dark:text-white">
           <div className="mx-auto w-full max-w-6xl">
             <div className="mb-8 text-center sm:mb-10">
               <div className="mb-3 flex items-center gap-4 sm:gap-6">
@@ -237,7 +278,7 @@ const PageHome = () => {
               </h2>
               <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
               </div>
-              <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
+              <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg dark:text-white/80">
                 Some great prizes that you can get by learning something with your friend and making a project with it!
               </p>
             </div>
@@ -284,7 +325,7 @@ const PageHome = () => {
               ].map(({ image, fallback, title, description }) => (
                 <div
                   key={title}
-                  className="flex flex-col border-4 border-black/50 bg-white/20 p-4"
+                  className="flex flex-col border-4 border-black/50 bg-white/20 p-4 dark:border-white/25 dark:bg-white/10"
                 >
                   <div className="flex justify-center">
                     {image ? (
@@ -300,14 +341,14 @@ const PageHome = () => {
                     )}
                   </div>
                   <h3 className="mt-3 text-xl font-bold">{title}</h3>
-                  <p className="mt-1 text-base text-black/80">{description}</p>
+                  <p className="mt-1 text-base text-black/80 dark:text-white/80">{description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="text-black flex items-center justify-center w-full px-4 py-8 sm:px-6 sm:py-10">
+        <section className="text-black flex items-center justify-center w-full px-4 py-8 sm:px-6 sm:py-10 dark:text-white">
           <div className="w-full max-w-5xl">
           <div className="mb-6 flex items-center gap-4 sm:gap-6">
             <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
@@ -315,7 +356,7 @@ const PageHome = () => {
             <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
           </div>
           <div className="grid grid-cols-1 gap-4 sm:gap-5">
-             <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
+             <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
               <span className="font-dynapuff">
                 Q: Am I eligible to participate?
               </span>
@@ -323,7 +364,7 @@ const PageHome = () => {
                 A: You are eligible to participate in Sparkle if you are 18 years old or younger. You will need to verify your identity before being able to get prizes shipped to you.
               </span>
             </div>
-            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
+            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
               <span className="font-dynapuff">
                 Q: What do I do if I don't have a friend?
               </span>
@@ -331,7 +372,7 @@ const PageHome = () => {
                 A: We <b>can</b> find one for you, but we highly encourage you to talk more on Slack and we're sure that someone will be willing to pair up with you!
               </span>
             </div>
-            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
+            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
               <span className="font-dynapuff">
                 Q: Does the project need to be a code project?
               </span>
@@ -347,7 +388,7 @@ const PageHome = () => {
                   </a>.
               </span>
             </div>
-            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
+            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
               <span className="font-dynapuff">
                 Q: What can I learn from my partner/teacher?
               </span>
@@ -363,7 +404,7 @@ const PageHome = () => {
                 </span>
               </span>
             </div>
-            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg">
+            <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
               <span className="font-dynapuff">
                 Q: Why should I do this when I can do other ysws(s) without the learning process?
               </span>
@@ -371,7 +412,7 @@ const PageHome = () => {
                 A: Unlike other YSWS(s) where you're working alone or just building for the sake of building, this program is specifically designed for <b>skill transfer and collaboration between people</b>! No more wishing that you had their skills, start doing this with your friend so they can teach you their ways!
               </span>
             </div>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 border-4 border-black/50 bg-white/20 p-3 text-lg">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
               <span className="font-dynapuff flex-1">Still have questions? Join us on Slack!</span>
               <div className="flex gap-2">
                 <button
@@ -401,28 +442,18 @@ const PageHome = () => {
           </div>
         </section>
 
-      <section className="w-full font-dynapuff py-12 px-4 sm:px-6 lg:px-10 text-black">
+      <section className="w-full font-dynapuff py-12 px-4 sm:px-6 lg:px-10 text-black dark:text-white">
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center gap-4 sm:gap-6">
             <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
             <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">The Team</h2>
             <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
           </div>
-          <p className="mb-10 text-center text-base text-black/70 sm:text-lg max-w-2xl mx-auto">
+          <p className="mb-10 text-center text-base text-black/70 sm:text-lg max-w-2xl mx-auto dark:text-white/75">
             Meet the team behind Sparkle, a group of people who believe the best way to learn is with a friend by your side.
           </p>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              {
-                initials: "Y",
-                color: "bg-purple-400",
-                name: "Yehor",
-                handle: "@yehor",
-                role: "Developer",
-                bio: "Made the website from scratch. Owns the repo and tried to draw the clouds. Claims to not have a quote but here we are.",
-                quote: "Maybe try making a meta or a post in hq",
-                photo: yehorPfp,
-              },
               {
                 initials: "Z",
                 color: "bg-yellow-400",
@@ -432,6 +463,16 @@ const PageHome = () => {
                 bio: "Has no skills whatsover. Came up with the idea on his bed and fell off his bed trying to write it somewhere. Now knows what TypeScript and React are.",
                 quote: "chat will drinking 3 coffees in a day kill me",
                 photo: zookPfp,
+              },
+              {
+                initials: "Y",
+                color: "bg-purple-400",
+                name: "Yehor",
+                handle: "@yehor",
+                role: "Developer",
+                bio: "Made the website from scratch. Owns the repo and tried to draw the clouds. Claims to not have a quote but here we are.",
+                quote: "Maybe try making a meta or a post in hq",
+                photo: yehorPfp,
               },
               {
                 initials: "C",
@@ -444,15 +485,6 @@ const PageHome = () => {
                 photo: candyPfp,
               },
               {
-                initials: "A",
-                color: "bg-green-400",
-                name: "Anson Chung",
-                handle: "@Anson Chung",
-                role: "The Unemployed",
-                bio: "Decides to make a PR because he thinks the clouds were too spread out on the previous version of the website.",
-                quote: "I'd recommend removing ur jd Vance meme folder before applying for the visa",
-                photo: ansonPfp,
-              },{
                 initials: "G",
                 color: "bg-gray-400",
                 name: "Grayson V",
@@ -461,10 +493,21 @@ const PageHome = () => {
                 bio: "Good at writing and doing backend stuff.",
                 quote: "why are we committing api keys to a public repo",
                 photo: graysonPfp,
-              },            ].map(({ initials, color, name, handle, role, bio, quote, photo }) => (
+              },
+              {
+                initials: "A",
+                color: "bg-green-400",
+                name: "Anson Chung",
+                handle: "@Anson Chung",
+                role: "The Unemployed",
+                bio: "Decides to make a PR because he thinks the clouds were too spread out on the previous version of the website.",
+                quote: "I'd recommend removing ur jd Vance meme folder before applying for the visa",
+                photo: ansonPfp,
+              },            
+            ].map(({ initials, color, name, handle, role, bio, quote, photo }) => (
               <div
                 key={handle}
-                className="flex flex-col border-4 border-black/50 bg-white/20 hover:scale-105 transition-transform duration-200"
+                className="flex flex-col border-4 border-black/50 bg-white/20 hover:scale-105 transition-transform duration-200 dark:border-white/25 dark:bg-white/10"
               >
                 <div className="flex justify-center pt-4">
                   {photo ? (
@@ -484,13 +527,13 @@ const PageHome = () => {
                 <div className="flex flex-col gap-2 p-3 text-lg">
                   <div>
                     <p className="font-dynapuff text-xl font-bold leading-tight">{name}</p>
-                    <p className="text-sm text-black/50">{handle}</p>
+                    <p className="text-sm text-black/50 dark:text-white/55">{handle}</p>
                   </div>
                   <span className="self-start bg-black/10 px-2 py-0.5 text-sm font-semibold">
                     {role}
                   </span>
-                  <p className="font-medium text-black/80 leading-snug">{bio}</p>
-                  <blockquote className="border-l-4 border-black/30 pl-3 text-sm italic text-black/60">
+                  <p className="font-medium text-black/80 leading-snug dark:text-white/85">{bio}</p>
+                  <blockquote className="border-l-4 border-black/30 pl-3 text-sm italic text-black/60 dark:border-white/30 dark:text-white/70">
                     "{quote}"
                   </blockquote>
                 </div>
