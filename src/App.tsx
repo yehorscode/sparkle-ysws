@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<PageHome />} />
+            <Route path="/auth/callback" element />
           </Route>
         </Routes>
       </ThemeProvider>

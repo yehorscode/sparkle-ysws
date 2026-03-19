@@ -19,6 +19,14 @@ import eyeshake from "@/assets/eyeshake.gif";
 import { Moon, Sun } from "@phosphor-icons/react";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
+import Counter from "@/components/Counter";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+  TooltipProvider
+} from "@/components/ui/tooltip";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -62,11 +70,13 @@ const PageHome = () => {
   const [email, setEmail] = useState("");
   const bg_1920x1080 = sparkle_bg_1920x1080;
   const bg_2560x1440 = sparkle_bg_2560x1440;
-  const { theme, setTheme } = useTheme();
-  const rsvpHelperApiKey = "rsvpk_jqtgPur85swbADCjzvjpXBUCo01dLsPR";
-  // const [sparkleClicks, setSparkleClicks] = useState(0);
   const selectBackground = (width: number) =>
     width >= 2200 ? bg_2560x1440 : bg_1920x1080;
+  const { theme, setTheme } = useTheme();
+  const rsvpHelperApiKey = "rsvpk_jqtgPur85swbADCjzvjpXBUCo01dLsPR";
+  const submissionsKey = "rsvp-submittions";
+  const timestampKey = "submittions-fetch-timestamp";
+  const ttlMs = 5 * 60 * 1000;
 
   const [heroBackground, setHeroBackground] = useState(() =>
     typeof window === "undefined"
@@ -74,17 +84,49 @@ const PageHome = () => {
       : selectBackground(window.innerWidth),
   );
 
+  const [rsvpSubmittions, setRsvpSubmittions] = useState<number>(0);
+
   useEffect(() => {
     const updateBackground = () => {
       setHeroBackground(selectBackground(window.innerWidth));
     };
-
     updateBackground();
     window.addEventListener("resize", updateBackground);
 
     return () => {
       window.removeEventListener("resize", updateBackground);
     };
+  }, []);
+  useEffect(() => {
+    const cachedSubmissions = localStorage.getItem(submissionsKey);
+    const cachedTimestamp = localStorage.getItem(timestampKey);
+
+    const timestampMs = cachedTimestamp ? Date.parse(cachedTimestamp) : NaN;
+    const isNew =
+      Number.isFinite(timestampMs) && Date.now() - timestampMs < ttlMs;
+
+    if (cachedSubmissions) {
+      setRsvpSubmittions(Number.parseInt(cachedSubmissions, 10) || 0);
+    }
+    if (cachedSubmissions && isNew) return;
+
+    const fetchSubmissions = async () => {
+      try {
+        const response = await axios.get(
+          "https://starlight.thirtyseven.tech/tempapi/rsvp-submissions",
+        );
+        const total = Number(response.data?.total_submissions ?? 0);
+
+        setRsvpSubmittions(total);
+        localStorage.setItem(submissionsKey, String(total));
+        localStorage.setItem(timestampKey, new Date().toISOString());
+      } catch (error) {
+        toast.error("Failed to fetch RSVP submissions");
+        console.error("Failed to fetch RSVP submissions", error);
+      }
+    };
+
+    void fetchSubmissions();
   }, []);
 
   async function rsvp_handler(email: string) {
@@ -145,6 +187,7 @@ const PageHome = () => {
 
     window.location.href = `https://forms.fillout.com/t/e2tRAi4Lh4us?${searchParams.toString()}`;
   }
+
   return (
     <div className="w-full">
       <section
@@ -160,7 +203,9 @@ const PageHome = () => {
                 ) : (
                   <Moon className="scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
                 )}
-                <span className="ml-2">{theme === "light" ? "Light" : "Dark"}</span>
+                <span className="ml-2">
+                  {theme === "light" ? "Light" : "Dark"}
+                </span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -214,6 +259,19 @@ const PageHome = () => {
               RSVP
             </button>
           </form>
+          <TooltipProvider>
+          <Tooltip>
+            <TooltipContent className="relative md:-bottom-8 md:-rotate-20">
+              <p>Updated live!!</p>
+            </TooltipContent>
+            <TooltipTrigger asChild>
+              <span className="text-shadow-lg text-cyan-600 font-dynapuff relative md:bottom-7 md:left-55 md:-rotate-20 gap-1 justify-end text-right text-md">
+                Join <span className="font-bold">{rsvpSubmittions}</span> RSVP'd
+                people!
+              </span>
+            </TooltipTrigger>
+          </Tooltip>
+          </TooltipProvider>
         </div>
         <span className="absolute bottom-5 text-xl text-[#515441] drop-shadow-xl">
           Scroll down to learn more!
@@ -226,12 +284,12 @@ const PageHome = () => {
         </span> */}
       </section>
 
-      <div className="bg-gradient-to-b from-[#f3e9b2] via-cyan-300/65 to-[#8df1fe] transition-colors dark:from-[#f3e9b2] dark:via-slate-950 dark:to-slate-900">
+      <div className="bg-linear-to-b from-[#f3e9b2] via-cyan-300/65 to-[#8df1fe] transition-colors dark:from-[#f3e9b2] dark:via-slate-950 dark:to-slate-900">
         <section className="font-dynapuff w-full px-4 pt-18 pb-12 text-black sm:px-6 sm:pt-20 sm:pb-14 lg:px-10">
           <div className="mx-auto w-full max-w-6xl">
             <div className="mb-8 text-center sm:mb-10">
               <div className="mb-3 flex items-center gap-4 sm:gap-6">
-                <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
+                <span className="h-0.75 flex-1 bg-linear-to-r from-black/70 to-transparent" />
                 <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
                   <img
                     src={sparkles}
@@ -245,7 +303,7 @@ const PageHome = () => {
                     className="relative -top-1 ml-1 inline w-15"
                   />
                 </h2>
-                <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
+                <span className="h-0.75 flex-1 bg-linear-to-r from-transparent to-black/70" />
               </div>
               <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
                 A You Ship, We Ship (YSWS) where friends teach each other
@@ -299,11 +357,11 @@ const PageHome = () => {
           <div className="mx-auto w-full max-w-6xl">
             <div className="mb-8 text-center sm:mb-10">
               <div className="mb-3 flex items-center gap-4 sm:gap-6">
-                <span className="h-[3px] flex-1 bg-gradient-to-r from-black/70 to-transparent" />
+                <span className="h-0.75 flex-1 bg-linear-to-r from-black/70 to-transparent" />
                 <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
                   Potential Prizes
                 </h2>
-                <span className="h-[3px] flex-1 bg-gradient-to-r from-transparent to-black/70" />
+                <span className="h-0.75 flex-1 bg-linear-to-r from-transparent to-black/70" />
               </div>
               <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg dark:text-white/80">
                 Some great prizes that you can get by learning something with
@@ -385,11 +443,11 @@ const PageHome = () => {
         <section className="text-black flex items-center justify-center w-full px-4 py-8 sm:px-6 sm:py-10 dark:text-white">
           <div className="w-full max-w-5xl">
             <div className="mb-6 flex items-center gap-4 sm:gap-6">
-              <span className="h-[3px] flex-1 bg-linear-to-r from-black/70 to-transparent" />
+              <span className="h-0.75 flex-1 bg-linear-to-r from-black/70 to-transparent" />
               <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
                 FAQ
               </h2>
-              <span className="h-[3px] flex-1 bg-linear-to-r from-transparent to-black/70" />
+              <span className="h-0.75 flex-1 bg-linear-to-r from-transparent to-black/70" />
             </div>
             <div className="grid grid-cols-1 gap-4 sm:gap-5">
               <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
@@ -496,11 +554,11 @@ const PageHome = () => {
         <section className="w-full font-dynapuff py-12 px-4 sm:px-6 lg:px-10 text-black dark:text-white">
           <div className="mx-auto max-w-5xl">
             <div className="mb-8 flex items-center gap-4 sm:gap-6">
-              <span className="h-[3px] flex-1 bg-linear-to-r from-black/70 to-transparent" />
+              <span className="h-0.75 flex-1 bg-linear-to-r from-black/70 to-transparent" />
               <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
                 The Team
               </h2>
-              <span className="h-[3px] flex-1 bg-linear-to-r from-transparent to-black/70" />
+              <span className="h-0.75 flex-1 bg-linear-to-r from-transparent to-black/70" />
             </div>
             <p className="mb-10 text-center text-base text-black/70 sm:text-lg max-w-2xl mx-auto dark:text-white/75">
               Meet the team behind Sparkle, a group of people who believe the
@@ -616,7 +674,7 @@ const PageHome = () => {
           </div>
         </section>
 
-        <section className="w-full text-white font-dynapuff">
+        <section className="w-full text-black font-dynapuff">
           <div className="p-4 text-center flex flex-col items-center">
             <span className="text-2xl sm:text-3xl ">
               What are you waiting for? RSVP now!
