@@ -2,7 +2,7 @@ import hc_flag from "@/assets/hc-flag-white.svg";
 import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_full_1920x1080.webp";
 import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
 import { type ReactNode, useEffect, useState } from "react";
-import cloud from "@/assets/cloud2.png";
+import cloud from "@/assets/cloud.webp";
 import yehorPfp from "@/assets/yehor.webp";
 import zookPfp from "@/assets/zook.webp";
 import candyPfp from "@/assets/candy.webp";
