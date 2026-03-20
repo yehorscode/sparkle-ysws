@@ -47,16 +47,16 @@ const CloudStepCard = ({
   return (
     <div className={`mx-auto w-full ${className}`}>
       <div
-        className="cloud-float flex w-full aspect-12/10 flex-col items-center justify-center bg-center bg-no-repeat px-10 text-center transition-all duration-200 sm:bg-size-[120%_auto] sm:px-14 md:px-16"
+        className="cloud-float flex w-full aspect-12/10 flex-col items-center justify-center bg-center bg-no-repeat px-5 text-center transition-all duration-200 sm:bg-size-[120%_auto] sm:px-5 md:px-10"
         style={{
           backgroundImage: `url(${cloud})`,
           backgroundSize: "130% auto",
           animationDelay: floatDelay,
         }}
       >
-        <div className="flex w-7/10 flex-col text-left">
+        <div className="flex sm:w-7/10 md:w-8/10 lg:w-7/10 flex-col text-left">
           <span className="text-3xl font-bold sm:text-4xl">{step}.</span>
-          <span className="text-2xl leading-tight lg:text-[1.7rem]">
+          <span className="text-xl leading-tight sm:text-2xl md:text-lg lg:text-xl xl:text-2xl">
             {children}
           </span>
         </div>
