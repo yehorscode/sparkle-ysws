@@ -130,7 +130,7 @@ export const HeroSection = () => {
           A YSWS where friends teach each other skills, ship a project, and get
           rewarded together.
         </p>
-        {/* RSVP form */},
+        {/* RSVP form */}
         <form
           className="mt-2 flex w-full max-w-md rounded bg-white/90 p-2 text-black shadow-lg"
           onSubmit={(e) => {
