@@ -1,6 +1,6 @@
 import { useTheme } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "@phosphor-icons/react";
+import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_full_1920x1080.webp";
 import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
@@ -92,9 +92,9 @@ export const HeroSection = () => {
           <DropdownMenuTrigger asChild>
             <Button className="rounded-full font-light font-dynapuff border-gray-400 border-2 bg-white text-black">
               {theme === "light" ? (
-                <Sun className="scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+                <SunIcon className="scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
               ) : (
-                <Moon className="scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+                <MoonIcon className="scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
               )}
               <span className="ml-2">
                 {theme === "light" ? "Light" : "Dark"}
@@ -165,7 +165,7 @@ export const HeroSection = () => {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <span className="absolute bottom-5 text-xl text-[#515441] drop-shadow-xl">
+      <span className="absolute bottom-5 text-xl text-[#515441] drop-shadow-xl font-dynapuff">
         Scroll down to learn more!
       </span>
       {/* <span
