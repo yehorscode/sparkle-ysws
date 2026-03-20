@@ -84,6 +84,9 @@ const TeamSection = () => {
                     <img
                       src={photo}
                       alt={name}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
                       className="w-24 aspect-square object-cover object-top border-4 border-black/20"
                     />
                   ) : (
