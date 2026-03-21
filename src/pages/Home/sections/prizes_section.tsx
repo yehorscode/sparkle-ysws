@@ -68,7 +68,7 @@ const PrizesSection = () => {
           ].map(({ image, fallback, title, description }) => (
             <div
               key={title}
-              className="flex flex-col border-4 border-black/50 bg-white/20 p-4 dark:border-white/25 dark:bg-white/10"
+              className="flex hover:scale-103 transition-all duration-75 flex-col border-4 border-black/50 bg-white/20 p-4 dark:border-white/25 dark:bg-white/10"
             >
               <div className="flex justify-center">
                 {image ? (

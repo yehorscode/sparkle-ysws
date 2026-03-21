@@ -36,7 +36,7 @@ const TeamSection = () => {
               color: "bg-purple-400",
               name: "Yehor",
               handle: "@yehor",
-              role: "Developer",
+              role: "Website Developer",
               bio: "Made the website from scratch. Owns the repo and tried to draw the clouds. Claims to not have a quote but here we are.",
               quote: "Maybe try making a meta or a post in hq",
               photo: yehorPfp,
@@ -77,7 +77,7 @@ const TeamSection = () => {
             ({ initials, color, name, handle, role, bio, quote, photo }) => (
               <div
                 key={handle}
-                className="flex flex-col border-4 border-black/50 bg-white/20 hover:scale-105 transition-transform duration-200 dark:border-white/25 dark:bg-white/10"
+                className="flex flex-col border-4 border-black/50 bg-white/20 hover:scale-103 transition-all duration-75  dark:border-white/25 dark:bg-white/10"
               >
                 <div className="flex justify-center pt-4">
                   {photo ? (

@@ -50,7 +50,7 @@ const QandASection = () => {
               .
             </span>
           </div>
-          <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
+          <div className="flex flex-col border-4  border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
             <span className="font-dynapuff">
               Q: What can I learn from my partner/teacher?
             </span>
@@ -87,7 +87,7 @@ const QandASection = () => {
             </span>
             <div className="flex gap-2">
               <button
-                className="bg-amber-400 border-2 border-black/30 px-3 py-1.5 font-semibold hover:scale-90 transition-all"
+                className="bg-amber-400 border-2 hover:cursor-pointer border-black/30 px-3 py-1.5 font-semibold hover:scale-90 transition-all"
                 onClick={(e) => {
                   e.preventDefault();
                   window.open(
@@ -99,7 +99,7 @@ const QandASection = () => {
                 Open channel
               </button>
               <button
-                className="bg-red-500 border-2 border-black/30 px-3 py-1.5 font-semibold text-white hover:scale-90 transition-all"
+                className="bg-red-500 border-2 hover:cursor-pointer border-black/30 px-3 py-1.5 font-semibold text-white hover:scale-90 transition-all"
                 onClick={(e) => {
                   e.preventDefault();
                   window.open("https://hackclub.com/slack", "_blank");

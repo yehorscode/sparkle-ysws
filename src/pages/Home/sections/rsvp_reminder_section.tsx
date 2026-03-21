@@ -25,7 +25,7 @@ const RSVPReminderSection = () => {
           <button
             type="submit"
             className="border-2 hover:scale-110 transition-all border-black p-2 text-base font-bold hover:cursor-pointer sm:text-lg md:text-xl"
-            // onClick={() => rsvp_handler(email)}
+            onClick={() => rsvp_handler(email)}
           >
             RSVP
           </button>

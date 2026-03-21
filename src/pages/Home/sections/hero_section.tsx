@@ -119,14 +119,14 @@ export const HeroSection = () => {
       {/* Centered hero content */}
       <div className="absolute inset-0 flex flex-col items-center justify-start pt-12 text-center px-4 gap-3 sm:pt-16 md:pt-20">
         <h1
-          className="font-dynapuff text-6xl font-bold text-white drop-shadow-lg sm:text-7xl md:text-8xl xl:text-9xl"
+          className="font-dynapuff drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.6)] text-6xl font-bold text-white sm:text-7xl md:text-8xl xl:text-9xl"
           style={{
             textShadow: "0 0 4px rgba(0,0,0,0.3), 0 0 8px rgba(0,0,0,0.2)",
           }}
         >
           Sparkle
         </h1>
-        <p className="font-dynapuff max-w-xl text-lg text-white text-shadow-lg dark:text-white drop-shadow sm:text-xl md:text-2xl">
+        <p className="font-dynapuff drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.6)] max-w-xl text-lg text-white text-shadow-lg dark:text-white  sm:text-xl md:text-2xl">
           A YSWS where friends teach each other skills, ship a project, and get
           rewarded together.
         </p>
@@ -165,7 +165,7 @@ export const HeroSection = () => {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <span className="absolute bottom-5 text-xl text-[#515441] drop-shadow-xl font-dynapuff">
+      <span className="absolute bottom-5 drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.6)] text-xl text-[#464646] font-dynapuff">
         Scroll down to learn more!
       </span>
       {/* <span
