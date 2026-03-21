@@ -4,6 +4,7 @@ import Layout from "@/pages/Layout/Layout";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import ErrorPage from "@/pages/Error/Error";
 function App() {
   return (
     <BrowserRouter>
@@ -11,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<PageHome />} />
-            <Route path="/auth/callback" element />
+            <Route path="/error" element={<ErrorPage />} />
           </Route>
         </Routes>
       </ThemeProvider>
