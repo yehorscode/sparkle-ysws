@@ -24,7 +24,7 @@ const CloudStepCard = ({
           animationDelay: floatDelay,
         }}
       >
-        <div className="flex sm:w-7/10 md:w-8/10 lg:w-7/10 flex-col text-left">
+        <div className="flex w-7/10 sm:w-7/10 md:w-8/10 lg:w-7/10 flex-col text-left">
           <span className="text-3xl font-bold sm:text-4xl">{step}.</span>
           <span className="text-xl leading-tight sm:text-2xl md:text-lg lg:text-xl xl:text-2xl">
             {children}
@@ -42,7 +42,7 @@ const ExplainerSection = () => {
         <div className="mb-8 text-center sm:mb-10">
           <div className="mb-3 flex items-center gap-4 sm:gap-6">
             <span className="h-0.75 flex-1 bg-linear-to-r from-black/70 to-transparent" />
-            <h2 className="font-dynapuff text-4xl font-bold sm:text-5xl md:text-6xl">
+            <h2 className="font-dynapuff text-3xl font-bold sm:text-5xl md:text-6xl">
               <img
                 src={sparkles}
                 alt=""

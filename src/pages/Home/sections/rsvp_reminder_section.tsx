@@ -10,7 +10,7 @@ const RSVPReminderSection = () => {
           What are you waiting for? RSVP now!
         </span>
         <form
-          className="mt-4 w-1/2 flex rounded bg-white p-2 text-black sm:mt-5"
+          className="mt-4 w-full xl:w-1/2 flex border-2 border-black/20 bg-white p-2 text-black sm:mt-5"
           onSubmit={(e) => {
             e.preventDefault();
             void rsvp_handler(email);
