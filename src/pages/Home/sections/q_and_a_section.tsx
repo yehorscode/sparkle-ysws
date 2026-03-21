@@ -87,7 +87,7 @@ const QandASection = () => {
             </span>
             <div className="flex gap-2">
               <button
-                className="bg-amber-400 border-2 hover:cursor-pointer border-black/30 px-3 py-1.5 font-semibold hover:scale-90 transition-all"
+                className="bg-amber-400 border-2  hover:cursor-pointer border-black/30 px-3 py-1.5 font-semibold hover:scale-90 transition-all"
                 onClick={(e) => {
                   e.preventDefault();
                   window.open(
@@ -96,7 +96,7 @@ const QandASection = () => {
                   );
                 }}
               >
-                Open channel
+                <span className="drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.7)]">Open channel</span>
               </button>
               <button
                 className="bg-red-500 border-2 hover:cursor-pointer border-black/30 px-3 py-1.5 font-semibold text-white hover:scale-90 transition-all"
@@ -105,7 +105,7 @@ const QandASection = () => {
                   window.open("https://hackclub.com/slack", "_blank");
                 }}
               >
-                Join Hack Club Slack
+                <span className="drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.7)]">Join Hack Club Slack</span>
               </button>
             </div>
           </div>
