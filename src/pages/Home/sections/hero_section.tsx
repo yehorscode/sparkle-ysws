@@ -38,7 +38,10 @@ export const HeroSection = () => {
       : selectBackground(window.innerWidth),
   );
 
-  const [rsvpSubmittions, setRsvpSubmittions] = useState<number>(0);
+  const [rsvpSubmittions, setRsvpSubmittions] = useState<number>(() => {
+    const cached = localStorage.getItem("rsvp-submittions");
+    return cached ? Number.parseInt(cached, 10) || 0 : 0;
+  });
   useEffect(() => {
     const updateBackground = () => {
       setHeroBackground(selectBackground(window.innerWidth));
@@ -59,8 +62,8 @@ export const HeroSection = () => {
     const isNew =
       Number.isFinite(timestampMs) && Date.now() - timestampMs < ttlMs;
 
-    if (cachedSubmissions) {
-      setRsvpSubmittions(Number.parseInt(cachedSubmissions, 10) || 0);
+    if (cachedSubmissions && isNew) {
+      return;
     }
     if (cachedSubmissions && isNew) return;
 
