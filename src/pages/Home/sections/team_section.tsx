@@ -6,7 +6,7 @@ import graysonPfp from "@/assets/thirtyseven.jpeg";
 
 const TeamSection = () => {
   return (
-    <section className="w-full font-dynapuff py-12 px-4 sm:px-6 lg:px-10 text-black dark:text-white">
+    <section className="w-full font-dynapuff py-12 px-4 sm:px-6 lg:px-10 text-white">
       <div className="mx-auto max-w-5xl">
         <div className="mb-8 flex items-center gap-4 sm:gap-6">
           <span className="h-0.75 flex-1 bg-linear-to-r from-black/70 to-transparent" />
@@ -15,7 +15,7 @@ const TeamSection = () => {
           </h2>
           <span className="h-0.75 flex-1 bg-linear-to-r from-transparent to-black/70" />
         </div>
-        <p className="mb-10 text-center text-base text-black/70 sm:text-lg max-w-2xl mx-auto dark:text-white/75">
+        <p className="mb-10 text-center text-base text-white/75 sm:text-lg max-w-2xl mx-auto">
           Meet the team behind Sparkle, a group of people who believe the best
           way to learn is with a friend by your side.
         </p>
@@ -102,17 +102,17 @@ const TeamSection = () => {
                     <p className="font-dynapuff text-xl font-bold leading-tight">
                       {name}
                     </p>
-                    <p className="text-sm text-black/50 dark:text-white/55">
+                    <p className="text-sm text-white/55">
                       {handle}
                     </p>
                   </div>
                   <span className="self-start bg-black/10 px-2 py-0.5 text-sm font-semibold">
                     {role}
                   </span>
-                  <p className="font-medium text-black/80 leading-snug dark:text-white/85">
+                  <p className="font-medium text-white/85 leading-snug">
                     {bio}
                   </p>
-                  <blockquote className="border-l-4 border-black/30 pl-3 text-sm italic text-black/60 dark:border-white/30 dark:text-white/70">
+                  <blockquote className="border-l-4 border-white/30 pl-3 text-sm italic text-white/70">
                     "{quote}"
                   </blockquote>
                 </div>

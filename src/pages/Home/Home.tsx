@@ -18,7 +18,7 @@ const PageHome = () => {
   return (
     <div className="w-full">
       <HeroSection />
-      <div className="bg-linear-to-b from-[#f3e9b2] via-cyan-300/65 to-[#8df1fe] transition-colors dark:from-[#f3e9b2] dark:via-slate-950 dark:to-slate-900">
+      <div className="bg-[linear-gradient(to_bottom,_#f3e9b2_0%,_#b1e9fc_22%,_#141a2e_82%,_#020305_100%)] transition-colors">
         <ExplainerSection />
 
         <Suspense fallback={<SectionFallback />}>
