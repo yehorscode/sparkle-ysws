@@ -1,10 +1,16 @@
+import webdev from "@/assets/webdev.png";
+import gamedev from "@/assets/gamedev.png";
+import drawing from "@/assets/drawing.png";
+
+
+
 const learningPaths = [
   {
     title: "Web Dev",
     duration: "4 weeks",
     focus: "HTML, CSS, and React basics",
     project: "Build a cute website that showcases your skills.",
-    image: "src/assets/webdev.png",
+    image: webdev,
     imageAlt: "Web path preview",
   },
   {
@@ -12,7 +18,7 @@ const learningPaths = [
     duration: "4 weeks",
     focus: "Gameplay loops, sprites, and polish",
     project: "Ship a small co-op game and playtest with friends.",
-    image: "src/assets/gamedev.png",
+    image: gamedev,
     imageAlt: "Game path preview",
   },
   {
@@ -20,7 +26,7 @@ const learningPaths = [
     duration: "4 weeks",
     focus: "Sprite making, background creation and character design",
     project: "Make an interactive desk gadget and document every iteration.",
-    image: "src/assets/drawing.png",
+    image: drawing,
     imageAlt: "Art path preview",
   },
 ];
