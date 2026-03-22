@@ -6,7 +6,7 @@ import pikmin4 from "@/assets/pikmin4.jpg";
 
 const PrizesSection = () => {
   return (
-    <section className="font-dynapuff w-full px-4 pb-8 text-black sm:px-6 sm:pb-10 lg:px-10">
+    <section className="font-dynapuff w-full px-4 pb-8 text-black sm:px-6 sm:pb-10 lg:px-10 dark:text-white">
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-8 text-center sm:mb-10">
           <div className="mb-3 flex items-center gap-4 sm:gap-6">
@@ -16,7 +16,7 @@ const PrizesSection = () => {
             </h2>
             <span className="h-0.75 flex-1 bg-linear-to-r from-transparent to-black/70" />
           </div>
-          <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
+          <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg dark:text-white/80">
             Some great prizes that you can get by learning something with your
             friend and making a project with it!
           </p>
@@ -84,7 +84,7 @@ const PrizesSection = () => {
                 )}
               </div>
               <h3 className="mt-3 text-xl font-bold">{title}</h3>
-              <p className="mt-1 text-base text-black/80">
+              <p className="mt-1 text-base text-black/80 dark:text-white/80">
                 {description}
               </p>
             </div>

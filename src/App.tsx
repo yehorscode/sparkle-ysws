@@ -8,7 +8,7 @@ import ErrorPage from "@/pages/Error/Error";
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider storageKey="vite-ui-theme" defaultTheme="dark">
+      <ThemeProvider storageKey="vite-ui-theme" defaultTheme="light">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<PageHome />} />
