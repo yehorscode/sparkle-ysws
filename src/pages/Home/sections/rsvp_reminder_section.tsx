@@ -6,7 +6,7 @@ const RSVPReminderSection = () => {
   return (
     <section className="w-full text-black font-dynapuff">
       <div className="p-4 text-center flex flex-col items-center ">
-        <span className="text-2xl sm:text-3xl dark:text-white/85 ">
+        <span className="text-2xl sm:text-3xl text-white/85 ">
           What are you waiting for? RSVP now!
         </span>
         <form
