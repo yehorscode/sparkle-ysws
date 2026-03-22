@@ -70,7 +70,7 @@ export const HeroSection = () => {
     const fetchSubmissions = async () => {
       try {
         const response = await axios.get(
-          "https://starlight.thirtyseven.tech/tempapi/rsvp-submissions",
+          "https://starlight.sparkle.dino.icu/tempapi/rsvp-submissions",
         );
         const total = Number(response.data?.total_submissions ?? 0);
 
