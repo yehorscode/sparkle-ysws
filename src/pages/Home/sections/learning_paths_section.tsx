@@ -25,7 +25,7 @@ const learningPaths = [
     title: "Art and Drawing",
     duration: "4 weeks",
     focus: "Sprite making, background creation and character design",
-    project: "Make an interactive desk gadget and document every iteration.",
+    project: "Learn how to draw and use it in your projects!",
     image: drawing,
     imageAlt: "Art path preview",
   },
