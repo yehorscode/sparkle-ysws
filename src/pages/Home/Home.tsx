@@ -3,6 +3,9 @@ import ExplainerSection from "./sections/explainer_section";
 import { HeroSection } from "./sections/hero_section";
 
 const FooterSection = lazy(() => import("./sections/footer_section"));
+const LearningPathsSection = lazy(
+  () => import("./sections/learning_paths_section"),
+);
 const RSVPReminderSection = lazy(() => import("./sections/rsvp_reminder_section"));
 const PrizesSection = lazy(() => import("./sections/prizes_section"));
 const QandASection = lazy(() => import("./sections/q_and_a_section"));
@@ -20,6 +23,10 @@ const PageHome = () => {
       <HeroSection />
       <div className="bg-[linear-gradient(to_bottom,_#f3e9b2_0%,_#b1e9fc_22%,_#141a2e_82%,_#020305_100%)] transition-colors dark:bg-linear-to-b dark:from-[#f3e9b2] dark:via-slate-950 dark:to-slate-900">
         <ExplainerSection />
+
+        <Suspense fallback={<SectionFallback />}>
+          <LearningPathsSection />
+        </Suspense>
 
         <Suspense fallback={<SectionFallback />}>
           <PrizesSection />
