@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import sparkles from "@/assets/roundsparkles.png";
+import sparkles from "@/assets/roundsparkles.webp";
 import cloud from "@/assets/cloud.webp";
 
 type CloudStepCardProps = {

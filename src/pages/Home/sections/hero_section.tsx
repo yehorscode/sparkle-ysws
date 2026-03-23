@@ -1,7 +1,7 @@
 import { useTheme } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_full_1920x1080.webp";
+import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_1920x1080.webp";
 import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
 import dark_bg from "@/assets/dark_bg.webp";
 import axios from "axios";

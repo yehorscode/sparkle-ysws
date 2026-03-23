@@ -2,7 +2,7 @@ import yehorPfp from "@/assets/yehor.webp";
 import zookPfp from "@/assets/zook.webp";
 import candyPfp from "@/assets/candy.webp";
 import ansonPfp from "@/assets/anson.webp";
-import graysonPfp from "@/assets/thirtyseven.jpeg";
+import graysonPfp from "@/assets/thirtyseven.webp";
 
 const TeamSection = () => {
   return (

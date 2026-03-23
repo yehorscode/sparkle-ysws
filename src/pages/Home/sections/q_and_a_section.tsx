@@ -1,4 +1,4 @@
-import eyeshake from "@/assets/eyeshake.gif";
+import eyeshake from "@/assets/eyeshake.webp";
 
 const QandASection = () => {
   return (

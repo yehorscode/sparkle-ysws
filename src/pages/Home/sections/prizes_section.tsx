@@ -1,8 +1,8 @@
-import overcooked2 from "@/assets/overcooked2.png";
-import picopark from "@/assets/picopark.jpg";
-import dittoplushie from "@/assets/dittoplushie.jpg";
-import ittakestwo from "@/assets/ittakestwo.jpg";
-import pikmin4 from "@/assets/pikmin4.jpg";
+import overcooked2 from "@/assets/overcooked2.webp";
+import picopark from "@/assets/picopark.webp";
+import dittoplushie from "@/assets/dittoplushie.webp";
+import ittakestwo from "@/assets/ittakestwo.webp";
+import pikmin4 from "@/assets/pikmin4.webp";
 
 const PrizesSection = () => {
   return (
