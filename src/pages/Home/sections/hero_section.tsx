@@ -28,6 +28,7 @@ export const HeroSection = () => {
   const submissionsKey = "rsvp-submittions";
   const timestampKey = "submittions-fetch-timestamp";
   const ttlMs = 5 * 60 * 1000;
+  const requestTimeoutMs = 8000;
   const [email, setEmail] = useState("");
   const { theme, setTheme } = useTheme();
   const [isDesktop, setIsDesktop] = useState(
@@ -68,18 +69,37 @@ export const HeroSection = () => {
     if (cachedSubmissions && isNew) {
       return;
     }
-    if (cachedSubmissions && isNew) return;
+
+    const wait = (ms: number) =>
+      new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
 
     const fetchSubmissions = async () => {
-      try {
-        const response = await axios.get(
-          "https://starlight.sparkle.dino.icu/tempapi/rsvp-submissions",
-        );
-        const total = Number(response.data?.total_submissions ?? 0);
+      let attempt = 0;
 
-        setRsvpSubmittions(total);
-        localStorage.setItem(submissionsKey, String(total));
-        localStorage.setItem(timestampKey, new Date().toISOString());
+      try {
+        while (attempt < 2) {
+          try {
+            const response = await axios.get(
+              "https://starlight.sparkle.dino.icu/tempapi/rsvp-submissions",
+              { timeout: requestTimeoutMs },
+            );
+            const total = Number(response.data?.total_submissions ?? 0);
+
+            setRsvpSubmittions(total);
+            localStorage.setItem(submissionsKey, String(total));
+            localStorage.setItem(timestampKey, new Date().toISOString());
+            return;
+          } catch {
+            attempt += 1;
+            if (attempt >= 2) {
+              throw new Error("RSVP submissions fetch failed after retries");
+            }
+
+            await wait(900);
+          }
+        }
       } catch (error) {
         toast.error("Failed to fetch RSVP submissions");
         console.error("Failed to fetch RSVP submissions", error);
