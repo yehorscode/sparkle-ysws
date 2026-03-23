@@ -22,7 +22,8 @@ import { Moon, Sun } from "lucide-react";
 
 const HERO_BG_LIGHT = "/assets/sparkle_bg_1920x1080.webp";
 const HERO_BG_LIGHT_DESKTOP = "/assets/sparkle_bg_2560x1440.webp";
-const HERO_BG_DARK = "/assets/dark_bg.webp";
+const HERO_BG_DARK = "/assets/dark_bg_1920x1080.webp";
+const HERO_BG_DARK_DESKTOP = "/assets/dark_bg_2560x1440.webp";
 
 export const HeroSection = () => {
   const submissionsKey = "rsvp-submittions";
@@ -53,7 +54,9 @@ export const HeroSection = () => {
 
   const heroBackground =
     theme === "dark"
-      ? HERO_BG_DARK
+      ? isDesktop
+        ? HERO_BG_DARK_DESKTOP
+        : HERO_BG_DARK
       : isDesktop
         ? HERO_BG_LIGHT_DESKTOP
         : HERO_BG_LIGHT;
