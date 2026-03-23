@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import ErrorPage from "@/pages/Error/Error";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
         </Routes>
       </ThemeProvider>
       <Analytics />
+      <SpeedInsights />
       <Toaster />
     </BrowserRouter>
   );
