@@ -1,9 +1,6 @@
 import { useTheme } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_1920x1080.webp";
-import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
-import dark_bg from "@/assets/dark_bg.webp";
 import axios from "axios";
 import {
   Tooltip,
@@ -22,25 +19,19 @@ import hc_flag_black from "@/assets/hc-flag-black.svg";
 import { toast } from "sonner";
 import rsvp_handler from "@/components/rsvp_handler";
 import { Moon, Sun } from "lucide-react";
+
+const HERO_BG_LIGHT = "/assets/sparkle_bg_1920x1080.webp";
+const HERO_BG_LIGHT_DESKTOP = "/assets/sparkle_bg_2560x1440.webp";
+const HERO_BG_DARK = "/assets/dark_bg.webp";
+
 export const HeroSection = () => {
   const submissionsKey = "rsvp-submittions";
   const timestampKey = "submittions-fetch-timestamp";
   const ttlMs = 5 * 60 * 1000;
   const [email, setEmail] = useState("");
-
-  const selectBackground = (width: number, currentTheme: string) =>
-    currentTheme === "dark"
-      ? dark_bg
-      : width >= 2200
-        ? bg_2560x1440
-        : bg_1920x1080;
-  const bg_1920x1080 = sparkle_bg_1920x1080;
-  const bg_2560x1440 = sparkle_bg_2560x1440;
   const { theme, setTheme } = useTheme();
-  const [heroBackground, setHeroBackground] = useState(() =>
-    typeof window === "undefined"
-      ? bg_1920x1080
-      : selectBackground(window.innerWidth, theme),
+  const [isDesktop, setIsDesktop] = useState(
+    typeof window !== "undefined" ? window.innerWidth >= 2200 : false,
   );
 
   const [rsvpSubmittions, setRsvpSubmittions] = useState<number>(() => {
@@ -48,16 +39,23 @@ export const HeroSection = () => {
     return cached ? Number.parseInt(cached, 10) || 0 : 0;
   });
   useEffect(() => {
-    const updateBackground = () => {
-      setHeroBackground(selectBackground(window.innerWidth, theme));
+    const updateViewport = () => {
+      setIsDesktop(window.innerWidth >= 2200);
     };
-    updateBackground();
-    window.addEventListener("resize", updateBackground);
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
 
     return () => {
-      window.removeEventListener("resize", updateBackground);
+      window.removeEventListener("resize", updateViewport);
     };
-  }, [theme]);
+  }, []);
+
+  const heroBackground =
+    theme === "dark"
+      ? HERO_BG_DARK
+      : isDesktop
+        ? HERO_BG_LIGHT_DESKTOP
+        : HERO_BG_LIGHT;
 
   useEffect(() => {
     const cachedSubmissions = localStorage.getItem(submissionsKey);
@@ -92,9 +90,16 @@ export const HeroSection = () => {
   }, []);
   return (
     <section
-      className="relative flex h-[85vh] w-full justify-center bg-cover bg-center"
-      style={{ backgroundImage: `url(${heroBackground})` }}
+      className="relative flex h-[85vh] w-full justify-center overflow-hidden"
     >
+      <img
+        src={heroBackground}
+        alt="Sparkle hero background"
+        className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
+      />
       <div className="absolute right-4 top-3 z-100">
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
