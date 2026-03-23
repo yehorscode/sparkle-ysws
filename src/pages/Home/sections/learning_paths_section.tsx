@@ -1,6 +1,6 @@
-import webdev from "@/assets/webdev.png";
-import gamedev from "@/assets/gamedev.png";
-import drawing from "@/assets/drawing.png";
+import webdev from "@/assets/webdev.webp";
+import gamedev from "@/assets/gamedev.webp";
+import drawing from "@/assets/drawing.webp";
 
 
 
@@ -33,10 +33,10 @@ const learningPaths = [
 
 const LearningPathsSection = () => {
   return (
-    <section className="w-full px-4 py-10 font-dynapuff text-black dark:text-white sm:px-6 sm:py-12 lg:px-10">
+    <section className="w-full  px-4 py-10 font-dynapuff text-black dark:text-white sm:px-6 sm:py-12 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-8 text-center sm:mb-10">
-          <div className="mb-3 flex items-center gap-4 sm:gap-6">
+        <div className="mb-8  text-center sm:mb-10">
+          <div className="mb-3  flex items-center gap-4 sm:gap-6">
             <span className="h-0.75 flex-1 bg-linear-to-r from-black/70 to-transparent dark:from-white/70" />
             <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">
               Learning Paths

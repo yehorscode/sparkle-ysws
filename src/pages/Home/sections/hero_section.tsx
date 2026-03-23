@@ -1,6 +1,5 @@
 import { useTheme } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
-import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_full_1920x1080.webp";
 import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
@@ -22,7 +21,7 @@ import hc_flag_white from "@/assets/hc-flag-white.svg";
 import hc_flag_black from "@/assets/hc-flag-black.svg";
 import { toast } from "sonner";
 import rsvp_handler from "@/components/rsvp_handler";
-
+import { Moon, Sun } from "lucide-react";
 export const HeroSection = () => {
   const submissionsKey = "rsvp-submittions";
   const timestampKey = "submittions-fetch-timestamp";
@@ -101,9 +100,9 @@ export const HeroSection = () => {
           <DropdownMenuTrigger asChild>
             <Button className="rounded-full font-light font-dynapuff border-gray-400 border-2 bg-white text-black">
               {theme === "light" ? (
-                <SunIcon className="scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+                <Sun size={20} className="scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
               ) : (
-                <MoonIcon className="scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+                <Moon size={20} className="scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
               )}
               <span className="ml-2">
                 {theme === "light" ? "Light" : "Dark"}
@@ -133,9 +132,6 @@ export const HeroSection = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-start pt-12 text-center px-4 gap-3 sm:pt-16 md:pt-20">
         <h1
           className="font-dynapuff drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.6)] text-6xl font-bold text-white sm:text-7xl md:text-8xl xl:text-9xl"
-          style={{
-            textShadow: "0 0 4px rgba(0,0,0,0.3), 0 0 8px rgba(0,0,0,0.2)",
-          }}
         >
           Sparkle
         </h1>

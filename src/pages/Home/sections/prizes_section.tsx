@@ -6,7 +6,7 @@ import pikmin4 from "@/assets/pikmin4.jpg";
 
 const PrizesSection = () => {
   return (
-    <section className="font-dynapuff w-full px-4 pb-8 text-black sm:px-6 sm:pb-10 lg:px-10 dark:text-white">
+    <section className="font-dynapuff  w-full px-4 pb-8 text-black sm:px-6 sm:pb-10 lg:px-10 dark:text-white">
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-8 text-center sm:mb-10">
           <div className="mb-3 flex items-center gap-4 sm:gap-6">

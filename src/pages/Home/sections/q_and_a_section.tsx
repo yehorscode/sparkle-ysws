@@ -2,7 +2,7 @@ import eyeshake from "@/assets/eyeshake.gif";
 
 const QandASection = () => {
   return (
-    <section className="text-white flex items-center justify-center w-full px-4 py-8 sm:px-6 sm:py-10">
+    <section className="text-white  flex items-center justify-center w-full px-4 py-8 sm:px-6 sm:py-10">
       <div className="w-full max-w-5xl">
         <div className="mb-6 flex items-center gap-4 sm:gap-6">
           <span className="h-0.75 flex-1 bg-linear-to-r from-black/70 to-transparent" />

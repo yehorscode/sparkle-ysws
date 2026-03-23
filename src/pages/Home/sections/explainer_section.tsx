@@ -37,12 +37,12 @@ const CloudStepCard = ({
 
 const ExplainerSection = () => {
   return (
-    <section className="font-dynapuff w-full px-4 pt-18 pb-12 text-black sm:px-6 sm:pt-20 sm:pb-14 lg:px-10">
+    <section className="font-dynapuff w-full px-4 pt-18 pb-12 text-black  sm:px-6 sm:pt-20 sm:pb-14 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-8 text-center sm:mb-10">
           <div className="mb-3 flex items-center gap-4 sm:gap-6">
             <span className="h-0.75 flex-1 bg-linear-to-r from-black/70 to-transparent" />
-            <h2 className="font-dynapuff text-3xl font-bold sm:text-5xl md:text-6xl">
+            <h2 className="font-dynapuff dark:text-white text-3xl font-bold sm:text-5xl md:text-6xl">
               <img
                 src={sparkles}
                 alt=""
@@ -57,7 +57,7 @@ const ExplainerSection = () => {
             </h2>
             <span className="h-0.75 flex-1 bg-linear-to-r from-transparent to-black/70" />
           </div>
-          <p className="mx-auto mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
+          <p className="mx-auto dark:text-white mt-3 max-w-3xl text-base text-black/80 sm:text-lg">
             A You Ship, We Ship (YSWS) where friends teach each other skills,
             ship a project, and get rewards together!
           </p>
