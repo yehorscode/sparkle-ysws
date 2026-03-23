@@ -75,6 +75,9 @@ const PrizesSection = () => {
                   <img
                     src={image}
                     alt={title}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
                     className="w-48 aspect-square object-cover object-center border-4 border-black/20"
                   />
                 ) : (

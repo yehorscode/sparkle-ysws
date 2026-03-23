@@ -61,6 +61,8 @@ const LearningPathsSection = () => {
                     alt={path.imageAlt}
                     className="h-full w-full object-contain"
                     loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-black/10 text-sm font-semibold text-black/60 dark:bg-white/10 dark:text-white/60">
