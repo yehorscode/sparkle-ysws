@@ -157,7 +157,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Centered hero content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-start pt-12 text-center px-4 gap-3 sm:pt-16 md:pt-20">
+      <div className="absolute inset-0 flex flex-col items-center justify-start pt-40 text-center px-4 gap-3 sm:pt-16 md:pt-20">
         <h1
           className="font-dynapuff drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.6)] text-6xl font-bold text-white sm:text-7xl md:text-8xl xl:text-9xl"
         >
@@ -190,11 +190,11 @@ export const HeroSection = () => {
         </form>
         <TooltipProvider>
           <Tooltip>
-            <TooltipContent className="relative md:-bottom-8 md:-rotate-20">
+            <TooltipContent side="bottom" className="relative md:bottom-8 md:left-2 md:-rotate-20">
               <p>Updated live!!</p>
             </TooltipContent>
             <TooltipTrigger asChild>
-              <span className="text-shadow-lg text-cyan-600 font-dynapuff relative md:bottom-7 md:left-55 md:-rotate-20 gap-1 justify-end text-right text-md">
+              <span className="text-shadow-lg rounded bg-black px-2 drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.3)] text-white/90 font-dynapuff relative md:bottom-7 transition-all md:left-55 md:-rotate-20 gap-1 justify-end text-right text-md">
                 Join <span className="font-bold">{rsvpSubmittions}</span> RSVP'd
                 people!
               </span>
@@ -202,7 +202,7 @@ export const HeroSection = () => {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <span className="absolute bottom-5 drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.6)] text-xl text-[#464646] dark:text-white font-dynapuff">
+      <span className="absolute bottom-5 drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.7)] text-xl text-white font-dynapuff">
         Scroll down to learn more!
       </span>
       {/* <span
