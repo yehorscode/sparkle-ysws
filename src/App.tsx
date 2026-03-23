@@ -9,7 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider storageKey="vite-ui-theme" defaultTheme="dark">
+      <ThemeProvider storageKey="vite-ui-theme" defaultTheme="light">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<PageHome />} />

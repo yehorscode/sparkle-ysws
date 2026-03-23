@@ -4,6 +4,7 @@ import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import sparkle_bg_1920x1080 from "@/assets/sparkle_bg_full_1920x1080.webp";
 import sparkle_bg_2560x1440 from "@/assets/sparkle_bg_2560x1440.webp";
+import dark_bg from "@/assets/dark_bg.webp";
 import axios from "axios";
 import {
   Tooltip,
@@ -17,7 +18,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import hc_flag from "@/assets/hc-flag-white.svg";
+import hc_flag_white from "@/assets/hc-flag-white.svg";
+import hc_flag_black from "@/assets/hc-flag-black.svg";
 import { toast } from "sonner";
 import rsvp_handler from "@/components/rsvp_handler";
 
@@ -27,15 +29,19 @@ export const HeroSection = () => {
   const ttlMs = 5 * 60 * 1000;
   const [email, setEmail] = useState("");
 
-  const selectBackground = (width: number) =>
-    width >= 2200 ? bg_2560x1440 : bg_1920x1080;
+  const selectBackground = (width: number, currentTheme: string) =>
+    currentTheme === "dark"
+      ? dark_bg
+      : width >= 2200
+        ? bg_2560x1440
+        : bg_1920x1080;
   const bg_1920x1080 = sparkle_bg_1920x1080;
   const bg_2560x1440 = sparkle_bg_2560x1440;
   const { theme, setTheme } = useTheme();
   const [heroBackground, setHeroBackground] = useState(() =>
     typeof window === "undefined"
       ? bg_1920x1080
-      : selectBackground(window.innerWidth),
+      : selectBackground(window.innerWidth, theme),
   );
 
   const [rsvpSubmittions, setRsvpSubmittions] = useState<number>(() => {
@@ -44,7 +50,7 @@ export const HeroSection = () => {
   });
   useEffect(() => {
     const updateBackground = () => {
-      setHeroBackground(selectBackground(window.innerWidth));
+      setHeroBackground(selectBackground(window.innerWidth, theme));
     };
     updateBackground();
     window.addEventListener("resize", updateBackground);
@@ -52,7 +58,7 @@ export const HeroSection = () => {
     return () => {
       window.removeEventListener("resize", updateBackground);
     };
-  }, []);
+  }, [theme]);
 
   useEffect(() => {
     const cachedSubmissions = localStorage.getItem(submissionsKey);
@@ -70,7 +76,7 @@ export const HeroSection = () => {
     const fetchSubmissions = async () => {
       try {
         const response = await axios.get(
-          "https://starlight.thirtyseven.tech/tempapi/rsvp-submissions",
+          "https://starlight.sparkle.dino.icu/tempapi/rsvp-submissions",
         );
         const total = Number(response.data?.total_submissions ?? 0);
 
@@ -116,7 +122,11 @@ export const HeroSection = () => {
       </div>
       {/* HC flag — top left */}
       <div className="absolute left-4 top-3 sm:top-4 w-24 sm:w-28">
-        <img src={hc_flag} alt="Hack Club flag" width="120px" />
+        <img
+          src={theme === "dark" ? hc_flag_white : hc_flag_black}
+          alt="Hack Club flag"
+          width="120px"
+        />
       </div>
 
       {/* Centered hero content */}
@@ -168,7 +178,7 @@ export const HeroSection = () => {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <span className="absolute bottom-5 drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.6)] text-xl text-[#464646] font-dynapuff">
+      <span className="absolute bottom-5 drop-shadow-[0_1.2px_5px_rgba(0,0,0,0.6)] text-xl text-[#464646] dark:text-white font-dynapuff">
         Scroll down to learn more!
       </span>
       {/* <span
