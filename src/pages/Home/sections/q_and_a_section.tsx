@@ -17,9 +17,10 @@ const QandASection = () => {
               Q: Am I eligible to participate?
             </span>
             <span className="font-medium">
-              A: You are eligible to participate in Sparkle if you are 18 years
-              old or younger. You will need to verify your identity before being
-              able to get prizes shipped to you.
+              A: You are eligible to participate in Sparkle if you 
+              are between 13 and 18 years old. You will need to 
+              verify your identity before being able to get prizes 
+              shipped to you.
             </span>
           </div>
           <div className="flex flex-col border-4 border-black/50 bg-white/20 p-3 text-lg dark:border-white/25 dark:bg-white/10">
