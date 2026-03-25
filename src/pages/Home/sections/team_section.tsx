@@ -58,7 +58,7 @@ const TeamSection = () => {
               name: "Grayson V",
               handle: "@thirtyseven",
               role: "Backend Developer",
-              bio: "Good at writing and doing backend stuff.",
+              bio: "Good at writing and doing backend stuff. Probably the reason whatever's broken is broken.",
               quote: "why are we committing api keys to a public repo",
               photo: graysonPfp,
             },
