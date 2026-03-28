@@ -3,6 +3,7 @@ import zookPfp from "@/assets/zook.webp";
 import candyPfp from "@/assets/candy.webp";
 import ansonPfp from "@/assets/anson.webp";
 import graysonPfp from "@/assets/thirtyseven.webp";
+import mustafaPfp from "@/assets/mustafa.jpg";
 
 const TeamSection = () => {
   return (
@@ -61,6 +62,16 @@ const TeamSection = () => {
               bio: "Good at writing and doing backend stuff. Probably the reason whatever's broken is broken.",
               quote: "why are we committing api keys to a public repo",
               photo: graysonPfp,
+            },
+            {
+              initials: "M",
+              color: "bg-blue-400",
+              name: "Mustafa",
+              handle: "@Mustafa",
+              role: "Backend Developer",
+              bio: "#1 Svelte lover",
+              quote: "Meow",
+              photo: mustafaPfp,
             },
             {
               initials: "A",
